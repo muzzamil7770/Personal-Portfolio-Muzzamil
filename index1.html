@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Personal Portfolio of Mohammad Muzzamil, a Frontend Developer specializing in HTML, CSS, JavaScript, React, Angular, Tailwind CSS, and modern web technologies." />
+    <title>Mohammad Muzzamil | Portfolio</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z' fill='%23000000'/></svg>" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- AOS (Animate on Scroll) CDN -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Google Fonts (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <!-- Typed.js CDN -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <style>
+        /* Prevent horizontal overflow */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Glassmorphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Consistent dark blurry background */
+        section {
+            background: linear-gradient(135deg, #1e1e2f 0%, #2a2a3e 100%), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,128L48,138.7C96,149,192,171,288,176C384,181,480,171,576,149.3C672,128,768,96,864,101.3C960,107,1056,149,1152,160C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+        }
+
+        /* Progress bar styles */
+        .progress-bar {
+            height: 1.5rem;
+            background-color: #374151;
+            border-radius: 9999px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #3b82f6, #a855f7);
+            transition: width 1.5s ease-in-out;
+        }
+
+        /* Hamburger menu styles */
+        #menu-toggle {
+            display: none;
+        }
+
+        #menu-toggle:checked~.mobile-menu {
+            max-height: 600px;
+            opacity: 1;
+        }
+
+        .mobile-menu {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+
+        /* Gallery image hover effect */
+        .gallery-img {
+            transition: transform 0.7s ease, box-shadow 0.7s ease, opacity 0.7s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            opacity: 0.9;
+        }
+
+        /* Button hover effect */
+        .gradient-btn {
+            background: linear-gradient(to right, #3b82f6, #a855f7);
+            transition: all 0.7s ease;
+            position: relative;
+        }
+
+        .gradient-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            opacity: 0.95;
+        }
+
+        .gradient-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+            opacity: 0;
+            transition: opacity 0.7s ease;
+        }
+
+        .gradient-btn:hover::after {
+            opacity: 1;
+        }
+
+        /* Navbar active link highlight */
+        .nav-link.active {
+            position: relative;
+            color: #22d3ee !important;
+            transform: scale(1.1);
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #22d3ee, #a855f7);
+            animation: glow 1.5s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px #22d3ee;
+            }
+
+            50% {
+                box-shadow: 0 0 10px #a855f7;
+            }
+
+            100% {
+                box-shadow: 0 0 5px #22d3ee;
+            }
+        }
+
+        /* Dropdown styles */
+        .dropdown:hover .dropdown-menu,
+        .dropdown input:checked~.dropdown-menu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu {
+            display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        /* Navigation arrows */
+        .nav-arrows {
+            position: fixed;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 50;
+        }
+
+        .nav-arrow {
+            background: linear-gradient(to right, #3b82f6, #a855f7);
+            padding: 0.5rem;
+            border-radius: 9999px;
+            color: white;
+            transition: all 0.7s ease;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-arrow:hover {
+            transform: scale(1.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-arrow:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Scroll-to-top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background: linear-gradient(to right, #3b82f6, #a855f7);
+            padding: 0.5rem;
+            border-radius: 9999px;
+            color: white;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            z-index: 50;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            transform: scale(1.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer icon hover effects */
+        .footer-icon {
+            transition: all 0.7s ease;
+            position: relative;
+            font-size: 1.5rem;
+        }
+
+        .footer-icon:hover {
+            transform: scale(1.3) rotate(15deg);
+            color: #22d3ee;
+            animation: tada 1s ease;
+        }
+
+        .footer-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.7s ease;
+            z-index: -1;
+        }
+
+        .footer-icon:hover::after {
+            opacity: 1;
+        }
+
+        /* Scroll-triggered animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #projects {
+            min-height: 50vh;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white" style="    overflow: clip;">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full max-w-full bg-gray-900 bg-opacity-80 glass z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-white animate__animated animate__fadeIn" data-aos="fade-down">
+                        Mohammad Muzzamil</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#home"
+                        class="nav-link text-gray-200 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 animate__animated animate__fadeIn animate__delay-1s"
+                        data-aos="fade-down">Home</a>
+                    <div class="dropdown relative group">
+                        <a href="#about" id="about-nav"
+                            class="nav-link text-gray-200 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 animate__animated animate__fadeIn animate__delay-1s"
+                            data-aos="fade-down">About</a>
+                        <div
+                            class="dropdown-menu absolute bg-gray-900 bg-opacity-80 glass rounded-md shadow-lg mt-2 w-48">
+                            <a href="#skills"
+                                class="nav-link block px-4 py-2 text-gray-200 hover:text-cyan-400 text-sm font-medium transition-colors duration-300">Skills</a>
+                            <a href="#experience"
+                                class="nav-link block px-4 py-2 text-gray-200 hover:text-cyan-400 text-sm font-medium transition-colors duration-300">Experience</a>
+                            <a href="#education"
+                                class="nav-link block px-4 py-2 text-gray-200 hover:text-cyan-400 text-sm font-medium transition-colors duration-300">Education</a>
+                        </div>
+                    </div>
+                    <a href="#services"
+                        class="nav-link text-gray-200 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 animate__animated animate__fadeIn animate__delay-1s"
+                        data-aos="fade-down">Services</a>
+                    <a href="#projects"
+                        class="nav-link text-gray-200 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 animate__animated animate__fadeIn animate__delay-1s"
+                        data-aos="fade-down">Projects</a>
+                    <a href="#testimonials"
+                        class="nav-link text-gray-200 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 animate__animated animate__fadeIn animate__delay-1s"
+                        data-aos="fade-down">Testimonials</a>
+                    <a href="#blog"
+                        class="nav-link text-gray-200 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 animate__animated animate__fadeIn animate__delay-1s"
+                        data-aos="fade-down">Blog</a>
+                    <a href="#contact"
+                        class="nav-link text-gray-200 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 animate__animated animate__fadeIn animate__delay-1s"
+                        data-aos="fade-down">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <label for="menu-toggle" class="text-gray-200 hover:text-cyan-400 cursor-pointer">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </label>
+                    <input type="checkbox" id="menu-toggle" class="hidden" />
+                </div>
+            </div>
+            <div class="mobile-menu md:hidden bg-gray-900 bg-opacity-80 glass">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 animate__animated animate__slideInDown"
+                    data-aos="fade-down">
+                    <a href="#home"
+                        class="nav-link text-gray-200 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                    <div class="dropdown relative">
+                        <label for="about-toggle" id="about-nav-mobile"
+                            class="nav-link text-gray-200 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium cursor-pointer">About</label>
+                        <input type="checkbox" id="about-toggle" class="hidden" />
+                        <div class="dropdown-menu bg-gray-900 bg-opacity-80 glass rounded-md shadow-lg ml-4">
+                            <a href="#skills"
+                                class="nav-link block px-4 py-2 text-gray-200 hover:text-cyan-400 text-sm font-medium">Skills</a>
+                            <a href="#experience"
+                                class="nav-link block px-4 py-2 text-gray-200 hover:text-cyan-400 text-sm font-medium">Experience</a>
+                            <a href="#education"
+                                class="nav-link block px-4 py-2 text-gray-200 hover:text-cyan-400 text-sm font-medium">Education</a>
+                        </div>
+                    </div>
+                    <a href="#services"
+                        class="nav-link text-gray-200 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Services</a>
+                    <a href="#projects"
+                        class="nav-link text-gray-200 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                    <a href="#testimonials"
+                        class="nav-link text-gray-200 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Testimonials</a>
+                    <a href="#blog"
+                        class="nav-link text-gray-200 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+                    <a href="#contact"
+                        class="nav-link text-gray-200 hover:text-cyan-400 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Navigation Arrows -->
+    <div class="nav-arrows">
+        <button id="prev-section" class="nav-arrow" title="Previous Section">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+        <button id="next-section" class="nav-arrow" title="Next Section">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+    </div>
+    <!-- Scroll-to-Top Button -->
+    <button id="scroll-to-top" class="scroll-to-top" title="Scroll to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-8 animate-on-scroll"
+            data-aos="fade-up">
+            <div class="md:w-1/2 animate__animated animate__zoomIn" data-aos="zoom-in-left" data-aos-delay="100">
+                <img src="img/MUZZAMIL.png" alt="Mohammad Muzzamil Profile"
+                    class="rounded-full w-64 h-64 md:w-[30rem] md:h-[30rem] mx-auto object-cover shadow-lg gallery-img" />
+            </div>
+            <div class="md:w-1/2 text-center md:text-left animate__animated animate__fadeInRight" data-aos="fade-right"
+                data-aos-delay="200">
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-4">
+                    Hi, I'm <span class="text-cyan-400">Mohammad Muzzamil</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl text-gray-200 mb-6">
+                    <span id="typed" class="text-cyan-300"></span>
+                </h2>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <a href="mailto:mohammadmuzzamil7770@gmail.com"
+                        class="gradient-btn text-white px-6 py-3 rounded-full flex items-center space-x-2 transition-all duration-700 animate__animated animate__pulse animate__infinite"
+                        data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email Me</span>
+                    </a>
+                    <a href="https://wa.me/+923068667770" target="_blank" rel="noopener noreferrer"
+                        class="gradient-btn text-white px-6 py-3 rounded-full flex items-center space-x-2 transition-all duration-700 animate__animated animate__pulse animate__infinite"
+                        data-aos="fade-up" data-aos-delay="400">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mohammadmuzzamil7770" target="_blank" rel="noopener noreferrer"
+                        class="gradient-btn text-white px-6 py-3 rounded-full flex items-center space-x-2 transition-all duration-700 animate__animated animate__pulse animate__infinite"
+                        data-aos="fade-up" data-aos-delay="500">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+                <!-- <p class="mt-6 text-gray-200 text-lg">
+                    Email: mohammadmuzzamil7770@gmail.com | Phone: +92-306-866-7770
+                </p> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-white text-center mb-12 animate__animated animate__fadeInUp">About Me
+            </h2>
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/3 animate__animated animate__bounceInLeft" data-aos="zoom-in-left">
+                    <img src="img/MUZZAMIL.png" alt="Mohammad Muzzamil Profile"
+                        class="rounded-full w-64 h-64 mx-auto object-cover shadow-lg gallery-img" />
+                </div>
+                <div class="md:w-2/3 animate__animated animate__bounceInRight" data-aos="zoom-in-right">
+                    <p class="text-gray-200 text-lg leading-relaxed">
+                        I'm Mohammad Muzzamil, a passionate Frontend Developer with a knack for creating visually
+                        stunning and highly functional web interfaces. My expertise spans HTML, CSS, JavaScript, React,
+                        Angular, API integration, Tailwind CSS, and Bootstrap, with a focus on responsive, accessible,
+                        and performant
+                        websites.
+                    </p>
+                    <p class="text-gray-200 text-lg leading-relaxed mt-4">
+                        I thrive on solving complex UI/UX challenges, contributing to open-source projects, and staying
+                        at the forefront of frontend technologies. My goal is to deliver seamless digital experiences
+                        that captivate users and drive engagement.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-white text-center mb-12 animate__animated animate__fadeInUp">My Skills
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="progress-bar animate__animated animate__slideInLeft" data-aos="slide-left"
+                    data-aos-delay="100">
+                    <div class="progress-fill" style="width: 100%"></div>
+                    <span class="absolute top-0 left-0 px-2 py-1 text-white text-sm font-medium">HTML/CSS - 100%</span>
+                </div>
+                <div class="progress-bar animate__animated animate__slideInRight animate__delay-1s"
+                    data-aos="slide-right" data-aos-delay="200">
+                    <div class="progress-fill" style="width: 90%"></div>
+                    <span class="absolute top-0 left-0 px-2 py-1 text-white text-sm font-medium">JavaScript - 90%</span>
+                </div>
+                <div class="progress-bar animate__animated animate__slideInLeft animate__delay-2s" data-aos="slide-left"
+                    data-aos-delay="300">
+                    <div class="progress-fill" style="width: 85%"></div>
+                    <span class="absolute top-0 left-0 px-2 py-1 text-white text-sm font-medium">React - 85%</span>
+                </div>
+                <div class="progress-bar animate__animated animate__slideInRight animate__delay-3s"
+                    data-aos="slide-right" data-aos-delay="400">
+                    <div class="progress-fill" style="width: 95%"></div>
+                    <span class="absolute top-0 left-0 px-2 py-1 text-white text-sm font-medium">Angular - 95%</span>
+                </div>
+                <div class="progress-bar animate__animated animate__slideInLeft animate__delay-4s" data-aos="slide-left"
+                    data-aos-delay="500">
+                    <div class="progress-fill" style="width: 85%"></div>
+                    <span class="absolute top-0 left-0 px-2 py-1 text-white text-sm font-medium">Tailwind CSS -
+                        85%</span>
+                </div>
+                <div class="progress-bar animate__animated animate__slideInRight animate__delay-5s"
+                    data-aos="slide-right" data-aos-delay="600">
+                    <div class="progress-fill" style="width: 95%"></div>
+                    <span class="absolute top-0 left-0 px-2 py-1 text-white text-sm font-medium">Bootstrap - 95%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-white text-center mb-12 animate__animated animate__fadeInUp">Experience
+            </h2>
+            <div class="space-y-8">
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__slideInUp animate__delay-1s"
+                    data-aos="slide-up" data-aos-delay="100">
+                    <h3 class="text-xl font-semibold text-white">Frontend Web Developer | Upwork | Freelancer</h3>
+                    <p class="text-gray-200 mt-2">Nov 2023 - Present</p>
+                    <p class="text-gray-200 mt-2">Developed responsive web applications using HTML ,JavaScript ,
+                        Bootstrap and Tailwind CSS,
+                        improving user engagement by 40%.</p>
+                </div>
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__slideInUp animate__delay-2s"
+                    data-aos="slide-up" data-aos-delay="200">
+                    <h3 class="text-xl font-semibold text-white">React Developer | Front-End Web Developer at AlphaNuix
+                        Technologies</h3>
+                    <p class="text-gray-200 mt-2">April 2024 - Present</p>
+                    <p class="text-gray-200 mt-2">Designed intuitive user interfaces for web and mobile applications
+                        using the React library, integrating RESTful APIs to
+                        ensure seamless functionality and pixel-perfect implementation.</p>
+                </div>
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__slideInUp animate__delay-3s"
+                    data-aos="slide-up" data-aos-delay="300">
+                    <h3 class="text-xl font-semibold text-white">Angular Developer at AnchorsTech</h3>
+                    <p class="text-gray-200 mt-2">Apr 2025 - Present</p>
+                    <p class="text-gray-200 mt-2">Developed web applications using Angular with a focus on clean
+                        architecture and reusable components.2. Collaborated on UI/UX implementation using Angular
+                        Material and CSS frameworks to ensure responsive design. Built reusable components and modules
+                        for features like settings, chat, and profile sections. Integrated APIs and Firebase for dynamic
+                        data handling and secure authentication.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-white text-center mb-12 animate__animated animate__fadeInUp">Education
+            </h2>
+            <div class="space-y-8">
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__bounceInUp animate__delay-1s"
+                    data-aos="zoom-in-up" data-aos-delay="100">
+                    <h3 class="text-xl font-semibold text-white">Bachelor of Science in Information Technology</h3>
+                    <p class="text-gray-200 mt-2">University of Faisalabad, 2020 - 2024</p>
+                    <p class="text-gray-200 mt-2">As a skilled web developer with a years of experience, I specialize in
+                        creating responsive, user-friendly websites and
+                        web applications. I have a strong background in both front-end and back-end development, with
+                        expertise in technologies
+                        such as HTML, CSS, JavaScript. I’m passionate about crafting clean, efficient code and solving
+                        complex problems to
+                        deliver high-quality digital solutions. My goal is to build intuitive web experiences that help
+                        businesses grow and
+                        succeed online.</p>
+                </div>
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__bounceInUp animate__delay-2s"
+                    data-aos="zoom-in-up" data-aos-delay="200">
+                    <h3 class="text-xl font-semibold text-white">Frontend Development Certification</h3>
+                    <p class="text-gray-200 mt-2">Online Academy, 2023</p>
+                    <p class="text-gray-200 mt-2">Completed an intensive course on React, Angular, and modern frontend
+                        frameworks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-white text-center mb-12 animate__animated animate__fadeInUp">My Services
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Responsive Web Development -->
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__zoomIn animate__delay-1s"
+                    data-aos="zoom-in" data-aos-delay="100">
+                    <h3 class="text-xl font-semibold text-white mb-2">Responsive Web Development</h3>
+                    <p class="text-gray-200">Creating fully responsive websites using HTML, CSS, and modern frameworks
+                        like
+                        Bootstrap and Tailwind CSS for optimal display across all devices.</p>
+                </div>
+
+                <!-- React & Angular Development -->
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__zoomIn animate__delay-2s"
+                    data-aos="zoom-in" data-aos-delay="200">
+                    <h3 class="text-xl font-semibold text-white mb-2">React & Angular Development</h3>
+                    <p class="text-gray-200">Building dynamic single-page applications using React.js and Angular with
+                        component-based architecture and seamless state management.</p>
+                </div>
+
+                <!-- API & Firebase Integration -->
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__zoomIn animate__delay-3s"
+                    data-aos="zoom-in" data-aos-delay="300">
+                    <h3 class="text-xl font-semibold text-white mb-2">API & Firebase Integration</h3>
+                    <p class="text-gray-200">Integrating RESTful APIs and Firebase services (Auth, Firestore, Hosting)
+                        to enhance
+                        app functionality and deliver real-time experiences.</p>
+                </div>
+
+                <!-- UI/UX Design -->
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__zoomIn animate__delay-4s"
+                    data-aos="zoom-in" data-aos-delay="400">
+                    <h3 class="text-xl font-semibold text-white mb-2">UI/UX Design</h3>
+                    <p class="text-gray-200">Designing clean and user-friendly interfaces that prioritize usability,
+                        responsiveness,
+                        and visual appeal across devices.</p>
+                </div>
+
+                <!-- Frontend Optimization -->
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__zoomIn animate__delay-5s"
+                    data-aos="zoom-in" data-aos-delay="500">
+                    <h3 class="text-xl font-semibold text-white mb-2">Frontend Optimization</h3>
+                    <p class="text-gray-200">Enhancing performance through code optimization, lazy loading,
+                        accessibility
+                        improvements, and SEO best practices.</p>
+                </div>
+
+                <!-- Git & Version Control -->
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__zoomIn animate__delay-6s"
+                    data-aos="zoom-in" data-aos-delay="600">
+                    <h3 class="text-xl font-semibold text-white mb-2">Git & Version Control</h3>
+                    <p class="text-gray-200">Efficiently managing code using Git and GitHub for collaboration, version
+                        tracking, and
+                        continuous integration workflows.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-white text-center mb-12 animate__animated animate__fadeInUp">My Projects
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Project 1 Card -->
+                <div class="bg-gray-800 glass rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in-up"
+                    data-aos-delay="100">
+                    <img src="img/Stepping Stone Therapy (Case Study Design) n.png" alt="Stepping Stone Therapy"
+                        class="w-full h-48 object-cover gallery-img" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white">Stepping Stone Therapy</h3>
+                        <p class="text-gray-200 mt-2">A healthcare platform managing appointments, notes, diagnoses &
+                            more.
+                        </p>
+                        <a href="#project1"
+                            class="mt-4 inline-block text-cyan-400 hover:text-cyan-300 transition duration-500 transform hover:scale-105">View
+                            Project</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 Card -->
+                <div class="bg-gray-800 glass rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in-up"
+                    data-aos-delay="200">
+                    <img src="img/com1.png" alt="Comunitus" class="w-full h-48 object-cover gallery-img" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white">Comunitus Video Platform</h3>
+                        <p class="text-gray-200 mt-2">A doctor-patient video portal with e-consulting, Stripe, and
+                            profiles.
+                        </p>
+                        <a href="#project2"
+                            class="mt-4 inline-block text-cyan-400 hover:text-cyan-300 transition duration-500 transform hover:scale-105">View
+                            Project</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 Card -->
+                <div class="bg-gray-800 glass rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in-up"
+                    data-aos-delay="300">
+                    <img src="img/modav.jpeg" alt="Medical Athlete" class="w-full h-48 object-cover gallery-img" />
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-white">Medical Athlete</h3>
+                        <p class="text-gray-200 mt-2">A modern e-commerce site with responsive design and rich UI/UX.
+                        </p>
+                        <a href="#project3"
+                            class="mt-4 inline-block text-cyan-400 hover:text-cyan-300 transition duration-500 transform hover:scale-105">View
+                            Project</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Project Details Sections -->
+    <section id="project1" class="py-20 hidden animate-on-scroll" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-white text-center mb-12">Stepping Stone Therapy</h2>
+            <p class="text-gray-200 text-lg mb-6">
+                A modern HIPAA-compliant SPA for managing appointments, patient info, notes, ICD-10 diagnoses, discharge
+                summaries, and more. Built with Angular 19, Laravel, MySQL, RESTful APIs.
+            </p>
+            <div class="flex flex-col gap-4 mb-6">
+                <img src="img/Stepping Stone Therapy (Case Study Design) n.png" alt="Stepping Stone Screenshot"
+                    class="w-full object-cover rounded-lg gallery-img" />
+                <img src="img/Stepping Stone Therapy (Case Study Design) (1).png" alt="Stepping Stone Screenshot"
+                    class="w-full object-cover rounded-lg gallery-img" />
+            </div>
+            <div class="flex space-x-4">
+                <a href="#projects"
+                    class="text-cyan-400 hover:text-cyan-300 transition-transform transform hover:scale-105">Back to
+                    Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="project2" class="py-20 hidden animate-on-scroll" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-white text-center mb-12">Comunitus Video Platform</h2>
+            <p class="text-gray-200 text-lg mb-6">
+                HIPAA-compliant platform with doctor video uploads, patient subscriptions, e-prescriptions, verified
+                profiles, and Stripe integration. Built with Angular, Laravel, MySQL.
+            </p>
+            <div class="flex flex-col gap-4 mb-6">
+                <img src="img/com1.png" alt="Comunitus Screenshot" class="w-full object-cover rounded-lg gallery-img" />
+                <img src="img/com2.png" alt="Comunitus Screenshot" class="w-full object-cover rounded-lg gallery-img" />
+                <img src="img/com3.png" alt="Comunitus Screenshot" class="w-full object-cover rounded-lg gallery-img" />
+                <img src="img/com4.png" alt="Comunitus Screenshot" class="w-full object-cover rounded-lg gallery-img" />
+                <!-- <img src="img/com5.png" alt="Comunitus Screenshot" class="w-full object-cover rounded-lg gallery-img" /> -->
+                <img src="img/com6.png" alt="Comunitus Screenshot" class="w-full object-cover rounded-lg gallery-img" />
+                <img src="img/com7.png" alt="Comunitus Screenshot" class="w-full object-cover rounded-lg gallery-img" />
+                <img src="img/com8.png" alt="Comunitus Screenshot" class="w-full object-cover rounded-lg gallery-img" />
+            </div>
+            <div class="flex space-x-4">
+                <!-- <a href="https://example.com/project2" target="_blank"
+                    class="gradient-btn text-white px-8 py-3 rounded-full flex items-center space-x-2">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>Visit Project</span>
+                </a> -->
+                <a href="#projects"
+                    class="text-cyan-400 hover:text-cyan-300 transition-transform transform hover:scale-105">Back to
+                    Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="project3" class="py-20 hidden animate-on-scroll" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-white text-center mb-12">Medical Athlete</h2>
+            <p class="text-gray-200 text-lg mb-6">
+                A responsive e-commerce website built with HTML, CSS, JS, Bootstrap. Features include interactive
+                product
+                pages, image sliders, mobile optimization, and modern UI/UX.
+            </p>
+            <div class="flex flex-col gap-4 mb-6">
+                <img src="img/modav.jpeg" alt="Medical Athlete Screenshot"
+                    class="w-full object-cover rounded-lg gallery-img" />
+
+            </div>
+            <div class="flex space-x-4">
+                <!-- <a href="https://example.com/project3" target="_blank"
+                    class="gradient-btn text-white px-8 py-3 rounded-full flex items-center space-x-2">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span>Visit Project</span>
+                </a> -->
+                <a href="#projects"
+                    class="text-cyan-400 hover:text-cyan-300 transition-transform transform hover:scale-105">Back to
+                    Projects</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-white text-center mb-12 animate__animated animate__fadeInUp">Testimonials
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__zoomIn animate__delay-1s"
+                    data-aos="zoom-in" data-aos-delay="100">
+                    <p class="text-gray-200">"Clean, fast, and responsive work. Exactly what we needed."</p>
+                    <p class="text-cyan-400 mt-4 font-semibold">– Sarah Williams</p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__zoomIn animate__delay-2s"
+                    data-aos="zoom-in" data-aos-delay="200">
+                    <p class="text-gray-200">"Great design sense and fast delivery. Highly recommend."</p>
+                    <p class="text-cyan-400 mt-4 font-semibold">– David Kim</p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__zoomIn animate__delay-3s"
+                    data-aos="zoom-in" data-aos-delay="300">
+                    <p class="text-gray-200">"Reliable and skilled. The site turned out perfect."</p>
+                    <p class="text-cyan-400 mt-4 font-semibold">– Priya Nair</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Blog Preview Section -->
+    <section id="blog" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-white text-center mb-12 animate__animated animate__fadeInUp">Recent Blog
+                Posts</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Blog 1 -->
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__fadeInUp animate__delay-1s"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-semibold text-white">Tailwind CSS: Build Fast & Clean</h3>
+                    <p class="text-gray-200 mt-2">Why Tailwind is still the fastest way to build responsive UIs in 2025.
+                    </p>
+                    <a href="#blog-post1"
+                        class="mt-4 inline-block text-cyan-400 hover:text-cyan-300 transition-transform duration-700 transform hover:scale-105">Read
+                        More</a>
+                </div>
+
+                <!-- Blog 2 -->
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__fadeInUp animate__delay-2s"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-semibold text-white">React or Angular in 2025?</h3>
+                    <p class="text-gray-200 mt-2">A practical comparison for developers choosing the right frontend
+                        stack.
+                    </p>
+                    <a href="#blog-post2"
+                        class="mt-4 inline-block text-cyan-400 hover:text-cyan-300 transition-transform duration-700 transform hover:scale-105">Read
+                        More</a>
+                </div>
+
+                <!-- Blog 3 -->
+                <div class="bg-gray-800 glass rounded-lg p-6 animate__animated animate__fadeInUp animate__delay-3s"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-xl font-semibold text-white">Speed Matters: Web Optimization</h3>
+                    <p class="text-gray-200 mt-2">Simple ways to boost load time and performance using modern tools.</p>
+                    <a href="#blog-post3"
+                        class="mt-4 inline-block text-cyan-400 hover:text-cyan-300 transition-transform duration-700 transform hover:scale-105">Read
+                        More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Blog Post Sections -->
+    <section id="blog-post1" class="py-20 hidden animate-on-scroll" data-aos="fade-up">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-white text-center mb-8 animate__animated animate__fadeInUp">Tailwind CSS:
+                Build Fast & Clean</h2>
+            <p class="text-gray-200 text-center mb-6">Published on August 1, 2025</p>
+            <div class="bg-gray-800 glass rounded-lg p-8 animate__animated animate__fadeIn">
+                <img src="img/pngwing.com.png" alt="Tailwind Blog"
+                    class="w-full h-64 object-cover rounded-lg mb-6 gallery-img" data-aos="zoom-in"
+                    data-aos-delay="100" />
+                <p class="text-gray-200 text-lg mb-4">
+                    Tailwind CSS remains the most efficient way to build responsive UIs in 2025. Its utility-first
+                    approach
+                    reduces custom CSS and keeps your codebase clean.
+                </p>
+                <p class="text-gray-200 text-lg mb-4">
+                    Use Tailwind with frameworks like React or Angular to build scalable UIs faster. Combine with
+                    PostCSS or
+                    PurgeCSS to keep build sizes lean.
+                </p>
+                <p class="text-gray-200 text-lg mb-6">
+                    If you're looking for speed, structure, and design consistency—Tailwind is still unmatched.
+                </p>
+                <div class="flex space-x-4">
+
+                    <a href="#blog"
+                        class="inline-block text-cyan-400 hover:text-cyan-300 transition-transform duration-700 transform hover:scale-105"
+                        style="
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+">Back
+                        to Blog</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog-post2" class="py-20 hidden animate-on-scroll" data-aos="fade-up">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-white text-center mb-8 animate__animated animate__fadeInUp">React or
+                Angular
+                in 2025?</h2>
+            <p class="text-gray-200 text-center mb-6">Published on July 15, 2025</p>
+            <div class="bg-gray-800 glass rounded-lg p-8 animate__animated animate__fadeIn">
+                <img src="img/angular-react.png" alt="React vs Angular"
+                    class="w-full h-64 object-cover rounded-lg mb-6 gallery-img" data-aos="zoom-in"
+                    data-aos-delay="100" />
+                <p class="text-gray-200 text-lg mb-4">
+                    React offers flexibility, a vast ecosystem, and quick setups. Angular provides a complete toolkit
+                    with
+                    built-in features like routing, forms, and DI.
+                </p>
+                <p class="text-gray-200 text-lg mb-4">
+                    Choose React for quick SPAs, startups, and flexibility. Choose Angular for large-scale apps and
+                    teams
+                    that prefer structure.
+                </p>
+                <p class="text-gray-200 text-lg mb-6">
+                    The best choice depends on your team, timeline, and project scale.
+                </p>
+                <div class="flex space-x-4">
+
+                    <a href="#blog"
+                        class="inline-block text-cyan-400 hover:text-cyan-300 transition-transform duration-700 transform hover:scale-105"
+                        style="
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+">Back
+                        to Blog</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog-post3" class="py-20 hidden animate-on-scroll" data-aos="fade-up">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-white text-center mb-8 animate__animated animate__fadeInUp">Speed
+                Matters:
+                Web Optimization</h2>
+            <p class="text-gray-200 text-center mb-6">Published on June 30, 2025</p>
+            <div class="bg-gray-800 glass rounded-lg p-8 animate__animated animate__fadeIn">
+                <img src="img/download.png" alt="Web Optimization"
+                    class="w-full h-64 object-cover rounded-lg mb-6 gallery-img" data-aos="zoom-in"
+                    data-aos-delay="100" />
+                <p class="text-gray-200 text-lg mb-4">
+                    Users bounce fast. Speed up your site with lazy loading, asset compression, and code splitting.
+                </p>
+                <p class="text-gray-200 text-lg mb-4">
+                    Use Lighthouse, Web Vitals, and Firebase Hosting for measurable gains. Don’t forget accessibility—it
+                    directly impacts performance.
+                </p>
+                <p class="text-gray-200 text-lg mb-6">
+                    Better performance = better UX and SEO. It’s not optional anymore.
+                </p>
+                <div class="flex space-x-4">
+
+                    <a href="#blog"
+                        class="inline-block text-cyan-400 hover:text-cyan-300 transition-transform duration-700 transform hover:scale-105"
+                        style="
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+">Back
+                        to Blog</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll" data-aos="fade-up">
+            <h2 class="text-4xl font-bold text-white text-center mb-12 animate__animated animate__fadeInUp">Contact Me
+            </h2>
+            <div class="max-w-lg mx-auto animate__animated animate__zoomIn" data-aos="zoom-in">
+                <div class="space-y-6">
+                    <input type="text" placeholder="Your Name"
+                        class="w-full p-3 bg-gray-800 glass text-white rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all duration-700 transform hover:scale-105" />
+                    <input type="email" placeholder="Your Email"
+                        class="w-full p-3 bg-gray-800 glass text-white rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all duration-700 transform hover:scale-105" />
+                    <textarea placeholder="Your Message" rows="5"
+                        class="w-full p-3 bg-gray-800 glass text-white rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all duration-700 transform hover:scale-105"></textarea>
+                    <button
+                        class="w-full gradient-btn text-white p-3 rounded-md flex items-center justify-center space-x-2 transition-all duration-700">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Send Message</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll" data-aos="fade-up">
+            <p class="text-gray-200 text-lg mb-4 animate__animated animate__fadeIn">&copy; 2025 Mohammad Muzzamil. All
+                rights reserved.</p>
+            <div class="flex justify-center space-x-6 bg-gray-800 glass rounded-lg p-4">
+                <a href="https://github.com/muzzamil7770" target="_blank" rel="noopener noreferrer"
+                    class="footer-icon text-gray-200 transition-all duration-700">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/mohammadmuzzamil7770/" target="_blank" rel="noopener noreferrer"
+                    class="footer-icon text-gray-200 transition-all duration-700">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://wa.me/+923068667770" target="_blank" rel="noopener noreferrer"
+                    class="footer-icon text-gray-200 transition-all duration-700">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Animations and Navigation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize AOS
+            AOS.init({ duration: 1000, once: false });
+
+            // Typed.js for typewriter effect
+            new Typed('#typed', {
+                strings: ['Frontend Developer', 'UI/UX Designer', 'React Specialist', 'Angular Expert', 'Web Performance Enthusiast'],
+                typeSpeed: 50,
+                backSpeed: 30,
+                backDelay: 1000,
+                loop: true,
+            });
+
+            // Project section toggling
+            const projectLinks = document.querySelectorAll('a[href^="#project"]');
+            const projectSections = document.querySelectorAll('section[id^="project"]');
+            const projectsSection = document.querySelector('#projects');
+
+            projectLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    projectSections.forEach(section => section.classList.add('hidden'));
+                    projectsSection.classList.add('hidden');
+                    targetSection.classList.remove('hidden');
+                    window.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth' });
+                });
+            });
+
+            const backProjectLinks = document.querySelectorAll('a[href="#projects"]');
+            backProjectLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    projectSections.forEach(section => section.classList.add('hidden'));
+                    projectsSection.classList.remove('hidden');
+                    window.scrollTo({ top: projectsSection.offsetTop, behavior: 'smooth' });
+                });
+            });
+
+            // Blog post section toggling
+            const blogLinks = document.querySelectorAll('a[href^="#blog-post"]');
+            const blogSections = document.querySelectorAll('section[id^="blog-post"]');
+            const blogSection = document.querySelector('#blog');
+
+            blogLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    blogSections.forEach(section => section.classList.add('hidden'));
+                    blogSection.classList.add('hidden');
+                    targetSection.classList.remove('hidden');
+                    window.scrollTo({ top: targetSection.offsetTop, behavior: 'smooth' });
+                });
+            });
+
+            const backBlogLinks = document.querySelectorAll('a[href="#blog"]');
+            backBlogLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    blogSections.forEach(section => section.classList.add('hidden'));
+                    blogSection.classList.remove('hidden');
+                    window.scrollTo({ top: blogSection.offsetTop, behavior: 'smooth' });
+                });
+            });
+
+            // Navbar active link highlighting and section navigation
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('a.nav-link:not(.dropdown-menu .nav-link)');
+            const aboutSubLinks = document.querySelectorAll('.dropdown-menu .nav-link');
+            const aboutNav = document.getElementById('about-nav');
+            const aboutNavMobile = document.getElementById('about-nav-mobile');
+            const prevBtn = document.getElementById('prev-section');
+            const nextBtn = document.getElementById('next-section');
+            const scrollTopBtn = document.getElementById('scroll-to-top');
+
+            const mainSectionIds = ['home', 'about', 'services', 'projects', 'project1', 'project2', 'project3', 'testimonials', 'blog', 'contact'];
+            const aboutSectionIds = ['about', 'skills', 'experience', 'education'];
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            // Update main nav links
+                            navLinks.forEach((link) => {
+                                link.classList.remove('active');
+                                const href = link.getAttribute('href').substring(1);
+                                // Highlight "Projects" for both #projects and individual project sections
+                                if (href === 'projects' && (entry.target.id === 'projects' || entry.target.id.startsWith('project'))) {
+                                    link.classList.add('active');
+                                } else if (href === entry.target.id) {
+                                    link.classList.add('active');
+                                }
+                            });
+
+                            // Update About dropdown links and navbar text
+                            const inAboutSection = aboutSectionIds.includes(entry.target.id);
+                            aboutSubLinks.forEach((link) => {
+                                link.classList.remove('active');
+                                const href = link.getAttribute('href').substring(1);
+                                if (href === entry.target.id) {
+                                    link.classList.add('active');
+                                    aboutNav.textContent = `About → ${href.charAt(0).toUpperCase() + href.slice(1)}`;
+                                    aboutNavMobile.textContent = `About → ${href.charAt(0).toUpperCase() + href.slice(1)}`;
+                                }
+                            });
+
+                            // Revert to 'About' when not in About subsections
+                            if (!inAboutSection) {
+                                aboutNav.textContent = 'About';
+                                aboutNavMobile.textContent = 'About';
+                            }
+
+                            // Update navigation arrows
+                            if (prevBtn && nextBtn) {
+                                const currentMainIndex = mainSectionIds.indexOf(entry.target.id);
+                                const currentAboutIndex = aboutSectionIds.indexOf(entry.target.id);
+                                if (currentAboutIndex !== -1) {
+                                    // In About subsections
+                                    prevBtn.disabled = currentAboutIndex === 0;
+                                    nextBtn.disabled = currentAboutIndex === aboutSectionIds.length - 1;
+                                } else if (currentMainIndex !== -1) {
+                                    // In main sections
+                                    prevBtn.disabled = currentMainIndex === 0;
+                                    nextBtn.disabled = currentMainIndex === mainSectionIds.length - 1;
+                                }
+                            }
+
+                            // Trigger AOS animations
+                            if (entry.target.classList.contains('animate-on-scroll')) {
+                                entry.target.classList.add('visible');
+                            }
+                        }
+                    });
+                },
+                { threshold: 0.3 }
+            );
+
+            sections.forEach((section) => observer.observe(section));
+
+            // Navigation arrows functionality
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => {
+                    const currentLink = Array.from(navLinks).find(link => link.classList.contains('active')) ||
+                        Array.from(aboutSubLinks).find(link => link.classList.contains('active'));
+                    if (!currentLink) return;
+                    const currentId = currentLink.getAttribute('href').substring(1);
+                    const currentAboutIndex = aboutSectionIds.indexOf(currentId);
+                    const currentMainIndex = mainSectionIds.indexOf(currentId);
+
+                    if (currentAboutIndex !== -1 && currentAboutIndex > 0) {
+                        // Navigate within About subsections
+                        const prevSection = document.getElementById(aboutSectionIds[currentAboutIndex - 1]);
+                        window.scrollTo({ top: prevSection.offsetTop, behavior: 'smooth' });
+                    } else if (currentMainIndex !== -1 && currentMainIndex > 0) {
+                        // Navigate main sections
+                        const prevSection = document.getElementById(mainSectionIds[currentMainIndex - 1]);
+                        window.scrollTo({ top: prevSection.offsetTop, behavior: 'smooth' });
+                    }
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    const currentLink = Array.from(navLinks).find(link => link.classList.contains('active')) ||
+                        Array.from(aboutSubLinks).find(link => link.classList.contains('active'));
+                    if (!currentLink) return;
+                    const currentId = currentLink.getAttribute('href').substring(1);
+                    const currentAboutIndex = aboutSectionIds.indexOf(currentId);
+                    const currentMainIndex = mainSectionIds.indexOf(currentId);
+
+                    if (currentAboutIndex !== -1 && currentAboutIndex < aboutSectionIds.length - 1) {
+                        // Navigate within About subsections
+                        const nextSection = document.getElementById(aboutSectionIds[currentAboutIndex + 1]);
+                        window.scrollTo({ top: nextSection.offsetTop, behavior: 'smooth' });
+                    } else if (currentMainIndex !== -1 && currentMainIndex < mainSectionIds.length - 1) {
+                        // Navigate main sections
+                        const nextSection = document.getElementById(mainSectionIds[currentMainIndex + 1]);
+                        window.scrollTo({ top: nextSection.offsetTop, behavior: 'smooth' });
+                    }
+                });
+            }
+
+            // Scroll-to-top button visibility
+            if (scrollTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 200) {
+                        scrollTopBtn.classList.add('visible');
+                    } else {
+                        scrollTopBtn.classList.remove('visible');
+                    }
+                });
+
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

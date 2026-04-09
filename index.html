@@ -8,1996 +8,235 @@
         content="Professional Portfolio of Muhammad Muzzamil, a Software Engineer & Angular Developer specializing in HTML, CSS, JavaScript, TypeScript, React, Angular, Tailwind CSS, and modern web technologies." />
     <title>Muhammad Muzzamil | Software Engineer & Angular Developer</title>
     <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z' fill='%23000000'/></svg>" />
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z' fill='%23044C5F'/></svg>" />
 
-    <!-- External Dependencies -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    
+    <!-- Animation Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    
+    <!-- Typed.js -->
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-
-    <style>
-        /* Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            overflow-x: clip;
-            transition: all 0.3s ease;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-            color: #e2e8f0;
-        }
-
-        /* Light Mode Styles */
-        body.light {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
-            color: #1e293b;
-        }
-
-        body.light .glass {
-            background: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        body.light .nav-glass {
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
-        }
-
-        body.light .text-slate-300 {
-            color: #64748b;
-        }
-
-        body.light .text-slate-200 {
-            color: #475569;
-        }
-
-        body.light .text-white {
-            color: #1e293b;
-        }
-
-        body.light .bg-slate-800 {
-            background-color: #ffffff;
-        }
-
-        body.light .bg-slate-900 {
-            background-color: #f8fafc;
-        }
-
-        /* Professional Glass Effect */
-        .glass {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(148, 163, 184, 0.1);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-
-        .nav-glass {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-        }
-
-        /* Enhanced Typography */
-        .heading-primary {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-
-        .heading-secondary {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: -0.01em;
-        }
-
-        .text-gradient {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Professional Buttons */
-        .btn-primary {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            padding: 0.875rem 2rem;
-            border-radius: 0.75rem;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 40px -5px rgba(59, 130, 246, 0.4);
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn-primary:hover::before {
-            left: 100%;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid rgba(59, 130, 246, 0.5);
-            padding: 0.75rem 1.75rem;
-            border-radius: 0.75rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(59, 130, 246, 0.1);
-            border-color: #3b82f6;
-            transform: translateY(-1px);
-        }
-
-        /* Enhanced Cards */
-        .card-professional {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(148, 163, 184, 0.1);
-            border-radius: 1rem;
-            padding: 2rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-professional::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
-        }
-
-        .card-professional:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-            border-color: rgba(59, 130, 246, 0.3);
-        }
-
-        /* Professional Navigation */
-        .nav-link {
-            position: relative;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover {
-            background: rgba(59, 130, 246, 0.1);
-            color: #3b82f6;
-        }
-
-        .nav-link.active {
-            background: rgba(59, 130, 246, 0.15);
-            color: #3b82f6;
-        }
-
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 2px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            border-radius: 1px;
-        }
-
-        /* Enhanced Progress Bars */
-        .progress-container {
-            background: rgba(15, 23, 42, 0.6);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            border: 1px solid rgba(148, 163, 184, 0.1);
-        }
-
-        .progress-bar {
-            height: 0.75rem;
-            background: rgba(148, 163, 184, 0.2);
-            border-radius: 0.5rem;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            border-radius: 0.5rem;
-            transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% {
-                transform: translateX(-100%);
-            }
-
-            100% {
-                transform: translateX(100%);
-            }
-        }
-
-        /* Theme Toggle */
-        .theme-toggle {
-            width: 3.5rem;
-            height: 1.75rem;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            border-radius: 2rem;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .toggle-circle {
-            position: absolute;
-            top: 0.125rem;
-            left: 0.125rem;
-            width: 1.5rem;
-            height: 1.5rem;
-            background: white;
-            border-radius: 50%;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            color: #1e293b;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        body.light .toggle-circle {
-            transform: translateX(1.75rem);
-        }
-
-        /* Enhanced Animations */
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        .animate-pulse-slow {
-            animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
-        @keyframes pulse-slow {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.8;
-            }
-        }
-
-        /* Professional Image Styling */
-        .profile-image {
-            border-radius: 2rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        .profile-image::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #06b6d4);
-            border-radius: 2rem;
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .profile-image:hover::before {
-            opacity: 1;
-        }
-
-        .profile-image:hover {
-            transform: scale(1.02) rotate(1deg);
-        }
-
-        /* Project Image Styling */
-        .project-image {
-            border-radius: 1rem;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-        }
-
-        .project-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Enhanced Mobile Menu */
-        .mobile-menu {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        #menu-toggle:checked~.mobile-menu {
-            max-height: 500px;
-            opacity: 1;
-        }
-
-        /* Professional Footer */
-        .footer-icon {
-            width: 3rem;
-            height: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 0.75rem;
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            transition: all 0.3s ease;
-            font-size: 1.25rem;
-        }
-
-        .footer-icon:hover {
-            background: rgba(59, 130, 246, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
-        }
-
-        /* Scroll Indicators */
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: rgba(148, 163, 184, 0.2);
-            z-index: 9999;
-        }
-
-        .scroll-progress {
-            height: 100%;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            width: 0%;
-            transition: width 0.1s ease;
-        }
-
-        /* Enhanced Contact Form */
-        .form-input {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            border-radius: 0.75rem;
-            padding: 1rem 1.25rem;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            color: #e2e8f0;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-            background: rgba(15, 23, 42, 0.8);
-        }
-
-        .form-input::placeholder {
-            color: #94a3b8;
-        }
-
-        body.light .form-input {
-            background: rgba(255, 255, 255, 0.8);
-            color: #1e293b;
-            border-color: rgba(148, 163, 184, 0.3);
-        }
-
-        body.light .form-input:focus {
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        /* Navigation Arrows */
-        .nav-arrow {
-            width: 3rem;
-            height: 3rem;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
-        }
-
-        .nav-arrow:hover {
-            transform: scale(1.1);
-            box-shadow: 0 20px 40px -5px rgba(59, 130, 246, 0.4);
-        }
-
-        .nav-arrow:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .heading-primary {
-                font-size: 2.5rem;
-            }
-
-            .card-professional {
-                padding: 1.5rem;
-            }
-
-            .btn-primary {
-                padding: 0.75rem 1.5rem;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(15, 23, 42, 0.5);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
-        }
-
-        /* Dropdown Menu Styles */
-        .dropdown-menu {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-    </style>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="./styles/style.css" />
 </head>
 
-<body class="bg-slate-900 text-white">
+<body>
     <!-- Scroll Progress Indicator -->
     <div class="scroll-indicator">
         <div class="scroll-progress" id="scroll-progress"></div>
     </div>
 
-    <!-- Enhanced Navigation -->
-    <nav class="fixed top-0 left-0 w-full nav-glass z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center">
-                    <h1 class="text-2xl font-bold text-gradient animate__animated animate__fadeIn">
-                        Muhammad Muzzamil
-                    </h1>
-                </div>
-
-                <div class="hidden md:flex items-center space-x-1">
-                    <a href="#home" class="nav-link text-slate-300 hover:text-blue-400">Home</a>
-                    <div class="dropdown relative">
-                        <a href="#about" id="about-nav" class="nav-link text-slate-300 hover:text-blue-400">About</a>
-                        <div class="dropdown-menu absolute top-full mt-2 w-48 glass rounded-xl shadow-xl">
-                            <a href="#skills"
-                                class="nav-link block px-4 py-3 text-slate-300 hover:text-blue-400 rounded-t-xl">Skills</a>
-                            <a href="#experience"
-                                class="nav-link block px-4 py-3 text-slate-300 hover:text-blue-400">Experience</a>
-                            <a href="#education"
-                                class="nav-link block px-4 py-3 text-slate-300 hover:text-blue-400 rounded-b-xl">Education</a>
-                        </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="navbar-brand">Muhammad Muzzamil</a>
+            
+            <div class="navbar-menu">
+                <div id="nav-links"></div>
+                <div class="theme-toggle" id="theme-toggle" role="button" aria-label="Toggle theme" tabindex="0">
+                    <div class="theme-toggle-circle">
+                        <i class="fas fa-moon"></i>
                     </div>
-                    <a href="#services" class="nav-link text-slate-300 hover:text-blue-400">Services</a>
-                    <a href="#projects" class="nav-link text-slate-300 hover:text-blue-400">Projects</a>
-                    <a href="#testimonials" class="nav-link text-slate-300 hover:text-blue-400">Testimonials</a>
-                    <a href="#blog" class="nav-link text-slate-300 hover:text-blue-400">Blog</a>
-                    <a href="#contact" class="nav-link text-slate-300 hover:text-blue-400">Contact</a>
-
-                    <!-- <div class="theme-toggle ml-4" id="theme-toggle">
-                        <div class="toggle-circle">
-                            <i class="fas fa-moon"></i>
-                        </div>
-                    </div> -->
                 </div>
-
-                <!-- <div class="md:hidden flex items-center space-x-4">
-                    <div class="theme-toggle" id="theme-toggle-mobile">
-                        <div class="toggle-circle">
-                            <i class="fas fa-moon"></i>
-                        </div>
-                    </div>
-                    <label for="menu-toggle" class="text-slate-300 hover:text-blue-400 cursor-pointer">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </label>
-                    <input type="checkbox" id="menu-toggle" class="hidden" />
-                </div> -->
             </div>
 
-            <div class="mobile-menu md:hidden glass rounded-b-xl">
-                <div class="px-4 pt-2 pb-4 space-y-2">
-                    <a href="#home"
-                        class="nav-link text-slate-300 hover:text-blue-400 block px-4 py-3 rounded-lg">Home</a>
-                    <a href="#about"
-                        class="nav-link text-slate-300 hover:text-blue-400 block px-4 py-3 rounded-lg">About</a>
-                    <a href="#services"
-                        class="nav-link text-slate-300 hover:text-blue-400 block px-4 py-3 rounded-lg">Services</a>
-                    <a href="#projects"
-                        class="nav-link text-slate-300 hover:text-blue-400 block px-4 py-3 rounded-lg">Projects</a>
-                    <a href="#testimonials"
-                        class="nav-link text-slate-300 hover:text-blue-400 block px-4 py-3 rounded-lg">Testimonials</a>
-                    <a href="#blog"
-                        class="nav-link text-slate-300 hover:text-blue-400 block px-4 py-3 rounded-lg">Blog</a>
-                    <a href="#contact"
-                        class="nav-link text-slate-300 hover:text-blue-400 block px-4 py-3 rounded-lg">Contact</a>
+            <div class="mobile-toggle">
+                <div class="theme-toggle" id="theme-toggle-mobile" role="button" aria-label="Toggle theme" tabindex="0">
+                    <div class="theme-toggle-circle">
+                        <i class="fas fa-moon"></i>
+                    </div>
                 </div>
+                <button id="menu-btn" aria-label="Toggle menu">
+                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--text-secondary);">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
             </div>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#testimonials" class="nav-link">Testimonials</a>
+        <a href="#blog" class="nav-link">Blog</a>
+        <a href="#contact" class="nav-link">Contact</a>
+    </div>
+
     <!-- Navigation Arrows -->
-    <div class="fixed right-6 top-1/2 transform -translate-y-1/2 flex flex-col gap-3 z-40">
-        <button id="prev-section" class="nav-arrow" title="Previous Section">
+    <div class="nav-arrows">
+        <button id="prev-section" class="nav-arrow" title="Previous Section" aria-label="Previous section">
             <i class="fas fa-chevron-up"></i>
         </button>
-        <button id="next-section" class="nav-arrow" title="Next Section">
+        <button id="next-section" class="nav-arrow" title="Next Section" aria-label="Next section">
             <i class="fas fa-chevron-down"></i>
         </button>
     </div>
 
-    <!-- Scroll to Top Button -->
-    <button id="scroll-to-top"
-        class="fixed bottom-6 right-6 nav-arrow opacity-0 transform translate-y-16 transition-all duration-300"
-        title="Scroll to Top">
+    <!-- Scroll to Top -->
+    <button id="scroll-to-top" class="scroll-top" title="Scroll to Top" aria-label="Scroll to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-20 pb-10 ">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <div class="lg:w-1/2 animate-float" data-aos="zoom-in-right">
-                    <img src="img/MUZZAMIL.png" alt="Mohammad Muzzamil - Professional Frontend Developer"
-                        class="profile-image w-80 h-80 lg:w-96 lg:h-96 mx-auto object-cover" />
-                </div>
-
-                <div class="lg:w-1/2 text-center lg:text-left" data-aos="fade-left">
-                    <div class="mb-6">
-                        <p class="text-blue-400 font-semibold text-lg mb-2">Hello, I'm</p>
-                        <h1 class="heading-primary text-white mb-4">
-                            Muhammad <span class="text-gradient">Muzzamil</span>
-                        </h1>
-                        <h2 class="text-2xl lg:text-3xl text-slate-300 mb-6">
-                            <span id="typed" class="text-gradient"></span>
-                        </h2>
-                        <p class="text-slate-300 text-lg leading-relaxed mb-8 max-w-2xl">
-                            Dedicated Software Engineer with 2+ years of experience specializing in Angular-based front-end development 
-                            for scalable web applications, particularly in healthcare systems. Building high-performance, user-centric 
-                            dashboards and enterprise-grade platforms.
-                        </p>
-                    </div>
-
-                    <div class="flex flex-wrap justify-center lg:justify-start gap-4">
-                        <a href="mailto:mohammadmuzzamil7770@gmail.com"
-                            class="btn-primary text-white flex items-center space-x-2">
-                            <i class="fas fa-envelope"></i>
-                            <span>Get In Touch</span>
-                        </a>
-                        <a href="https://wa.me/+923068667770" target="_blank"
-                            class="btn-secondary text-blue-400 flex items-center space-x-2">
-                            <i class="fab fa-whatsapp"></i>
-                            <span>WhatsApp</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/mohammadmuzzamil7770" target="_blank"
-                            class="btn-secondary text-blue-400 flex items-center space-x-2">
-                            <i class="fab fa-linkedin"></i>
-                            <span>LinkedIn</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <section id="home" class="hero">
+        <div class="container">
+            <div id="hero-content" class="hero-content"></div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <div class="text-center mb-16">
-                <h2 class="heading-secondary text-white mb-4">About Me</h2>
-                <p class="text-slate-300 text-lg max-w-3xl mx-auto">
-                    Discover my journey, passion, and expertise in frontend development
-                </p>
+    <section id="about">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2 class="text-accent">About Me</h2>
+                <p>Discover my journey, passion, and expertise in frontend development</p>
             </div>
-
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <div class="lg:w-1/3" data-aos="zoom-in-left">
-                    <img src="img/MUZZAMIL.png" alt="Muhammad Muzzamil at work"
-                        class="profile-image w-80 h-80 mx-auto object-cover" />
-                </div>
-
-                <div class="lg:w-2/3" data-aos="fade-left">
-                    <div class="card-professional">
-                        <h3 class="text-2xl font-bold text-white mb-6">Software Engineer & Angular Developer</h3>
-                        <p class="text-slate-300 text-lg leading-relaxed mb-6">
-                            I'm Muhammad Muzzamil, a dedicated Software Engineer with 2+ years of experience specializing 
-                            in Angular-based front-end development for scalable web applications, particularly in healthcare systems. 
-                            Currently working as an Angular Developer at Anchors Tech, building high-performance, user-centric 
-                            dashboards and enterprise-grade platforms.
-                        </p>
-                        <p class="text-slate-300 text-lg leading-relaxed mb-8">
-                            My strong expertise spans TypeScript, modern UI architecture, REST API integration, with a focus on 
-                            performance optimization, clean code, and seamless user experience. I'm experienced in integrating 
-                            third-party services including Stripe, Firebase, and authentication systems.
-                        </p>
-
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                            <div class="text-center">
-                                <div class="text-3xl font-bold text-gradient mb-2">20+</div>
-                                <div class="text-slate-400 text-sm">Projects Completed</div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-3xl font-bold text-gradient mb-2">2+</div>
-                                <div class="text-slate-400 text-sm">Years Experience</div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-3xl font-bold text-gradient mb-2">Healthcare</div>
-                                <div class="text-slate-400 text-sm">Domain Expertise</div>
-                            </div>
-                            <div class="text-center">
-                                <div class="text-3xl font-bold text-gradient mb-2">90%+</div>
-                                <div class="text-slate-400 text-sm">Lighthouse Scores</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div id="about-content"></div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <div class="text-center mb-16">
-                <h2 class="heading-secondary text-white mb-4">Technical Skills</h2>
-                <p class="text-slate-300 text-lg max-w-3xl mx-auto">
-                    Proficiency in modern web technologies and frameworks
-                </p>
+    <section id="skills">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2 class="text-accent">Technical Skills</h2>
+                <p>Proficiency in modern web technologies and frameworks</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="progress-container" data-aos="slide-right" data-aos-delay="100">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="text-white font-semibold">HTML/CSS</span>
-                        <span class="text-blue-400 font-bold">100%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" data-width="100"></div>
-                    </div>
-                </div>
-
-                <div class="progress-container" data-aos="slide-left" data-aos-delay="200">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="text-white font-semibold">JavaScript</span>
-                        <span class="text-blue-400 font-bold">90%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" data-width="90"></div>
-                    </div>
-                </div>
-
-                <div class="progress-container" data-aos="slide-right" data-aos-delay="300">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="text-white font-semibold">React</span>
-                        <span class="text-blue-400 font-bold">85%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" data-width="85"></div>
-                    </div>
-                </div>
-
-                <div class="progress-container" data-aos="slide-left" data-aos-delay="400">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="text-white font-semibold">Angular</span>
-                        <span class="text-blue-400 font-bold">95%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" data-width="95"></div>
-                    </div>
-                </div>
-
-                <div class="progress-container" data-aos="slide-right" data-aos-delay="500">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="text-white font-semibold">Tailwind CSS</span>
-                        <span class="text-blue-400 font-bold">85%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" data-width="85"></div>
-                    </div>
-                </div>
-
-                <div class="progress-container" data-aos="slide-left" data-aos-delay="600">
-                    <div class="flex justify-between items-center mb-3">
-                        <span class="text-white font-semibold">Bootstrap</span>
-                        <span class="text-blue-400 font-bold">95%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" data-width="95"></div>
-                    </div>
-                </div>
-            </div>
+            <div id="skills-content" class="skills-grid"></div>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <div class="text-center mb-16">
-                <h2 class="heading-secondary text-white mb-4">Professional Experience</h2>
-                <p class="text-slate-300 text-lg max-w-3xl mx-auto">
-                    My journey through various roles and responsibilities
-                </p>
+    <section id="experience">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2 class="text-accent">Professional Experience</h2>
+                <p>My journey through various roles and responsibilities</p>
             </div>
-
-            <div class="space-y-8">
-                <div class="card-professional" data-aos="slide-up" data-aos-delay="100">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <h3 class="text-xl font-bold text-white">Angular Developer</h3>
-                        <span class="text-blue-400 font-semibold">Jul 2024 - Present</span>
-                    </div>
-                    <p class="text-slate-400 mb-3">Anchors Tech - Johar Town, Lahore, Punjab, Pakistan</p>
-                    <p class="text-slate-300 leading-relaxed">
-                        Developed a healthcare management dashboard with appointment scheduling, patient records, 
-                        multi-location booking, and insurance integration using Angular 19. Built real estate platforms 
-                        with Figma-to-code conversion, interactive Mapbox maps, multi-step forms, and dynamic PDF generation. 
-                        Implemented reusable components, Angular Material UI, JWT authentication, Firebase integration, 
-                        and real-time notifications with Socket.io. Optimized application performance, achieving 90%+ 
-                        Lighthouse scores and integrated AI chatbots with n8n automation workflows.
-                    </p>
-                </div>
-
-                <div class="card-professional" data-aos="slide-up" data-aos-delay="200">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <h3 class="text-xl font-bold text-white">Angular Developer (3-month Internship)</h3>
-                        <span class="text-blue-400 font-semibold">Mar 2024 - Jul 2024</span>
-                    </div>
-                    <p class="text-slate-400 mb-3">Anchors Tech - Johar Town, Lahore, Punjab, Pakistan</p>
-                    <p class="text-slate-300 leading-relaxed">
-                        Developed responsive web applications using Angular, TypeScript, and Bootstrap with a focus on 
-                        clean architecture and reusable components. Converted Figma wireframes into pixel-perfect UIs 
-                        and integrated REST APIs for dynamic data handling. Collaborated in Agile workflows, performed 
-                        unit testing, and used Git/GitHub for version control.
-                    </p>
-                </div>
-
-                <div class="card-professional" data-aos="slide-up" data-aos-delay="300">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <h3 class="text-xl font-bold text-white">Front-End Developer</h3>
-                        <span class="text-blue-400 font-semibold">Mar 2023 - Jul 2024</span>
-                    </div>
-                    <p class="text-slate-400 mb-3">AlphaNuix Technologies - Layyah, Punjab, Pakistan</p>
-                    <p class="text-slate-300 leading-relaxed">
-                        Developed responsive web applications using React and TypeScript, focusing on modern UI patterns. 
-                        Built reusable components and integrated REST APIs for seamless data flow. Collaborated with 
-                        backend teams (PHP/MySQL) to deliver full-stack features. Performed debugging, testing, and 
-                        cross-browser optimization.
-                    </p>
-                </div>
-            </div>
+            <div id="experience-content" class="experience-list"></div>
         </div>
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <div class="text-center mb-16">
-                <h2 class="heading-secondary text-white mb-4">Education & Certifications</h2>
-                <p class="text-slate-300 text-lg max-w-3xl mx-auto">
-                    Academic background and professional development
-                </p>
+    <section id="education">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2 class="text-accent">Education & Certifications</h2>
+                <p>Academic background and professional development</p>
             </div>
-
-            <div class="space-y-8">
-                <div class="card-professional" data-aos="zoom-in-up" data-aos-delay="100">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <h3 class="text-xl font-bold text-white">Bachelor of Science in Information Technology (BS IT)</h3>
-                        <span class="text-blue-400 font-semibold">Sep 2020 - Sep 2024</span>
-                    </div>
-                    <p class="text-slate-400 mb-3">Government College University Faisalabad (GCUF) - CGPA: 3.4</p>
-                    <p class="text-slate-300 leading-relaxed">
-                        Comprehensive study in web development, software engineering, and modern programming paradigms. 
-                        Specialized in frontend technologies, database management, and system design. Graduated with 
-                        strong foundation in both theoretical concepts and practical application development, with 
-                        focus on Angular, React, and full-stack development.
-                    </p>
-                </div>
-            </div>
+            <div id="education-content" class="experience-list"></div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <div class="text-center mb-16">
-                <h2 class="heading-secondary text-white mb-4">Professional Services</h2>
-                <p class="text-slate-300 text-lg max-w-3xl mx-auto">
-                    Comprehensive frontend development solutions for your business needs
-                </p>
+    <section id="services">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2 class="text-accent">Professional Services</h2>
+                <p>Comprehensive frontend development solutions for your business needs</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card-professional" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="text-blue-400 text-4xl mb-6">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Responsive Web Development</h3>
-                    <p class="text-slate-300 leading-relaxed">
-                        Creating fully responsive websites using HTML5, CSS3, and modern frameworks like Bootstrap
-                        and Tailwind CSS for optimal display across all devices and screen sizes.
-                    </p>
-                </div>
-
-                <div class="card-professional" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="text-blue-400 text-4xl mb-6">
-                        <i class="fab fa-react"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-4">React & Angular Development</h3>
-                    <p class="text-slate-300 leading-relaxed">
-                        Building dynamic single-page applications using React.js and Angular with component-based
-                        architecture, efficient state management, and seamless user experiences.
-                    </p>
-                </div>
-
-                <div class="card-professional" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="text-blue-400 text-4xl mb-6">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-4">API & Firebase Integration</h3>
-                    <p class="text-slate-300 leading-relaxed">
-                        Integrating RESTful APIs and Firebase services including Authentication, Firestore, and Hosting
-                        to enhance app functionality and deliver real-time experiences.
-                    </p>
-                </div>
-
-                <div class="card-professional" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="text-blue-400 text-4xl mb-6">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-4">UI/UX Design Implementation</h3>
-                    <p class="text-slate-300 leading-relaxed">
-                        Transforming design mockups into pixel-perfect, interactive interfaces that prioritize
-                        usability, accessibility, and visual appeal across all platforms.
-                    </p>
-                </div>
-
-                <div class="card-professional" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="text-blue-400 text-4xl mb-6">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Performance Optimization</h3>
-                    <p class="text-slate-300 leading-relaxed">
-                        Enhancing website performance through code optimization, lazy loading, image compression,
-                        and implementing SEO best practices for better search rankings.
-                    </p>
-                </div>
-
-                <div class="card-professional" data-aos="zoom-in" data-aos-delay="600">
-                    <div class="text-blue-400 text-4xl mb-6">
-                        <i class="fab fa-git-alt"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-4">Version Control & Collaboration</h3>
-                    <p class="text-slate-300 leading-relaxed">
-                        Efficient code management using Git and GitHub for seamless collaboration, version tracking,
-                        and continuous integration workflows in team environments.
-                    </p>
-                </div>
-            </div>
+            <div id="services-content" class="services-grid"></div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <div class="text-center mb-16">
-                <h2 class="heading-secondary text-white mb-4">Featured Projects</h2>
-                <p class="text-slate-300 text-lg max-w-3xl mx-auto">
-                    Showcase of my recent work and technical achievements
-                </p>
+    <section id="projects">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2 class="text-accent">Featured Projects</h2>
+                <p>Showcase of my recent work and technical achievements</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card-professional group cursor-pointer" data-aos="zoom-in-up" data-aos-delay="100">
-                    <div class="relative overflow-hidden rounded-lg mb-6">
-                        <img src="img/Stepping Stone Therapy (Case Study Design) n.png"
-                            alt="Stepping Stone Therapy - Pathways EHR Platform" class="project-image w-full h-48 object-cover" />
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Stepping Stone Therapy | Pathways EHR</h3>
-                    <p class="text-slate-300 mb-4 leading-relaxed">
-                        Full-featured medical practice management system with clinician availability, appointment scheduling, 
-                        patient records, multi-location booking, insurance integration, and real-time notifications.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Angular 19</span>
-                        <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm">TypeScript</span>
-                        <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">Firebase</span>
-                        <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm">Socket.io</span>
-                    </div>
-                    <a href="#project1"
-                        class="text-blue-400 hover:text-blue-300 font-semibold transition-colors duration-300">
-                        View Details <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-
-                <div class="card-professional group cursor-pointer" data-aos="zoom-in-up" data-aos-delay="200">
-                    <div class="relative overflow-hidden rounded-lg mb-6">
-                        <img src="img/Telemedix.png" alt="FirstCall TeleHealth EHR Platform"
-                            class="project-image w-full h-48 object-cover" />
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">FirstCall | TeleHealth EHR</h3>
-                    <p class="text-slate-300 mb-4 leading-relaxed">
-                        Multi-role healthcare platform with patient management, appointments, encounters, analytics modules, 
-                        role-based access control, and secure authentication with custom guards and interceptors.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Angular 19</span>
-                        <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm">RxJS</span>
-                        <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">Chart.js</span>
-                        <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm">Firebase</span>
-                    </div>
-                    <a href="#project2"
-                        class="text-blue-400 hover:text-blue-300 font-semibold transition-colors duration-300">
-                        View Details <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-
-                <div class="card-professional group cursor-pointer" data-aos="zoom-in-up" data-aos-delay="300">
-                    <div class="relative overflow-hidden rounded-lg mb-6">
-                        <img src="img/SNF Wound Care (Case Study Design).png" alt="SNF Wound Care EMR Platform"
-                            class="project-image w-full h-48 object-cover" />
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">SNF Wound Care – EMR & Telemedicine</h3>
-                    <p class="text-slate-300 mb-4 leading-relaxed">
-                        HIPAA-compliant EMR platform serving 12,000+ patients across 178 skilled nursing facilities with 
-                        video consultation, wound image tracking, and PCC/MatrixCare EMR integration.
-                    </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">React</span>
-                        <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm">Laravel</span>
-                        <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">MySQL</span>
-                        <span class="px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-sm">HIPAA</span>
-                    </div>
-                    <a href="#project3"
-                        class="text-blue-400 hover:text-blue-300 font-semibold transition-colors duration-300">
-                        View Details <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Project Detail Sections (Hidden by default) -->
-    <section id="project1" class="py-20 hidden">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <div class="text-center mb-12">
-                <h2 class="heading-secondary text-white mb-4">Stepping Stone Therapy</h2>
-                <p class="text-slate-300 text-lg max-w-4xl mx-auto leading-relaxed">
-                    A comprehensive HIPAA-compliant healthcare management system designed for therapy practices.
-                    Features include appointment scheduling, patient information management, clinical notes,
-                    ICD-10 diagnosis coding, and automated discharge summaries.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                <div class="card-professional">
-                    <h3 class="text-xl font-bold text-white mb-4">Key Features</h3>
-                    <ul class="space-y-3 text-slate-300">
-                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i>HIPAA-compliant
-                            data handling</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i>Appointment
-                            management system</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i>Patient
-                            information database</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i>Clinical notes and
-                            documentation</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i>ICD-10 diagnosis
-                            integration</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i>Automated
-                            discharge summaries</li>
-                    </ul>
-                </div>
-
-                <div class="card-professional">
-                    <h3 class="text-xl font-bold text-white mb-4">Technologies Used</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 bg-red-500/20 text-red-400 rounded-lg">Angular 19</span>
-                        <span class="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg">TypeScript</span>
-                        <span class="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg">Laravel</span>
-                        <span class="px-4 py-2 bg-green-500/20 text-green-400 rounded-lg">MySQL</span>
-                        <span class="px-4 py-2 bg-yellow-500/20 text-yellow-400 rounded-lg">RESTful APIs</span>
-                        <span class="px-4 py-2 bg-pink-500/20 text-pink-400 rounded-lg">Material Design</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <img src="img/Stepping Stone Therapy (Case Study Design) n.png" alt="Stepping Stone Dashboard"
-                    class="project-image w-full rounded-xl shadow-2xl" />
-                <img src="img/Stepping Stone Therapy (Case Study Design) (1).png" alt="Patient Management Interface"
-                    class="project-image w-full rounded-xl shadow-2xl" />
-            </div>
-
-            <div class="text-center">
-                <a href="#projects" class="btn-primary text-white mr-4">
-                    <i class="fas fa-arrow-left mr-2"></i>Back to Projects
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="project2" class="py-20 hidden">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <div class="text-center mb-12">
-                <h2 class="heading-secondary text-white mb-4">Comunitus Video Platform</h2>
-                <p class="text-slate-300 text-lg max-w-4xl mx-auto leading-relaxed">
-                    A comprehensive telemedicine platform enabling healthcare providers to upload educational videos,
-                    manage patient subscriptions, issue e-prescriptions, and maintain verified professional profiles
-                    with integrated payment processing.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                <div class="card-professional">
-                    <h3 class="text-xl font-bold text-white mb-4">Platform Features</h3>
-                    <ul class="space-y-3 text-slate-300">
-                        <li class="flex items-center"><i class="fas fa-video text-blue-400 mr-3"></i>Doctor video
-                            content management</li>
-                        <li class="flex items-center"><i class="fas fa-users text-green-400 mr-3"></i>Patient
-                            subscription system</li>
-                        <li class="flex items-center"><i
-                                class="fas fa-prescription-bottle-alt text-purple-400 mr-3"></i>E-prescription
-                            functionality</li>
-                        <li class="flex items-center"><i class="fas fa-shield-alt text-red-400 mr-3"></i>Verified doctor
-                            profiles</li>
-                        <li class="flex items-center"><i class="fas fa-credit-card text-yellow-400 mr-3"></i>Stripe
-                            payment integration</li>
-                        <li class="flex items-center"><i class="fas fa-lock text-pink-400 mr-3"></i>HIPAA compliance
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="card-professional">
-                    <h3 class="text-xl font-bold text-white mb-4">Technical Stack</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 bg-red-500/20 text-red-400 rounded-lg">Angular</span>
-                        <span class="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg">TypeScript</span>
-                        <span class="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg">Laravel</span>
-                        <span class="px-4 py-2 bg-green-500/20 text-green-400 rounded-lg">MySQL</span>
-                        <span class="px-4 py-2 bg-yellow-500/20 text-yellow-400 rounded-lg">Stripe API</span>
-                        <span class="px-4 py-2 bg-pink-500/20 text-pink-400 rounded-lg">Video Processing</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                <img src="img/com1.png" alt="Video Consultation" class="project-image w-full rounded-xl shadow-2xl" />
-                <img src="img/com2.png" alt="Doctor Profile" class="project-image w-full rounded-xl shadow-2xl" />
-                <img src="img/com3.png" alt="Patient Dashboard" class="project-image w-full rounded-xl shadow-2xl" />
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                <img src="img/com4.png" alt="Subscription Management"
-                    class="project-image w-full rounded-xl shadow-2xl" />
-                <img src="img/com6.png" alt="Payment Integration" class="project-image w-full rounded-xl shadow-2xl" />
-                <img src="img/com7.png" alt="Video Library" class="project-image w-full rounded-xl shadow-2xl" />
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-8">
-                <img src="img/com8.png" alt="Admin Dashboard" class="project-image w-full rounded-xl shadow-2xl" />
-            </div>
-
-            <div class="text-center">
-                <a href="#projects" class="btn-primary text-white mr-4">
-                    <i class="fas fa-arrow-left mr-2"></i>Back to Projects
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="project3" class="py-20 hidden">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <div class="text-center mb-12">
-                <h2 class="heading-secondary text-white mb-4">Medical Athlete E-commerce</h2>
-                <p class="text-slate-300 text-lg max-w-4xl mx-auto leading-relaxed">
-                    A modern, responsive e-commerce website designed for medical and athletic products.
-                    Features interactive product galleries, smooth animations, mobile-first design,
-                    and optimized user experience across all devices.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                <div class="card-professional">
-                    <h3 class="text-xl font-bold text-white mb-4">Design Features</h3>
-                    <ul class="space-y-3 text-slate-300">
-                        <li class="flex items-center"><i class="fas fa-mobile-alt text-blue-400 mr-3"></i>Mobile-first
-                            responsive design</li>
-                        <li class="flex items-center"><i class="fas fa-images text-green-400 mr-3"></i>Interactive
-                            product galleries</li>
-                        <li class="flex items-center"><i class="fas fa-sliders-h text-purple-400 mr-3"></i>Dynamic image
-                            sliders</li>
-                        <li class="flex items-center"><i class="fas fa-shopping-cart text-red-400 mr-3"></i>Intuitive
-                            shopping experience</li>
-                        <li class="flex items-center"><i class="fas fa-search text-yellow-400 mr-3"></i>Advanced product
-                            filtering</li>
-                        <li class="flex items-center"><i class="fas fa-bolt text-pink-400 mr-3"></i>Optimized
-                            performance</li>
-                    </ul>
-                </div>
-
-                <div class="card-professional">
-                    <h3 class="text-xl font-bold text-white mb-4">Technologies</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-2 bg-orange-500/20 text-orange-400 rounded-lg">HTML5</span>
-                        <span class="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg">CSS3</span>
-                        <span class="px-4 py-2 bg-yellow-500/20 text-yellow-400 rounded-lg">JavaScript</span>
-                        <span class="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg">Bootstrap</span>
-                        <span class="px-4 py-2 bg-green-500/20 text-green-400 rounded-lg">jQuery</span>
-                        <span class="px-4 py-2 bg-red-500/20 text-red-400 rounded-lg">Responsive Design</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-8">
-                <img src="img/modav.jpeg" alt="Medical Athlete Website"
-                    class="project-image w-full rounded-xl shadow-2xl" />
-            </div>
-
-            <div class="text-center">
-                <a href="#projects" class="btn-primary text-white mr-4">
-                    <i class="fas fa-arrow-left mr-2"></i>Back to Projects
-                </a>
-            </div>
+            <div id="projects-content" class="projects-grid"></div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <div class="text-center mb-16">
-                <h2 class="heading-secondary text-white mb-4">Client Testimonials</h2>
-                <p class="text-slate-300 text-lg max-w-3xl mx-auto">
-                    What clients say about working with me
-                </p>
+    <section id="testimonials">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2 class="text-accent">Client Testimonials</h2>
+                <p>What clients say about working with me</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="card-professional text-center" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="text-blue-400 text-5xl mb-6">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <p class="text-slate-300 text-lg leading-relaxed mb-6">
-                        "Mohammad delivered exceptional work with clean, fast, and responsive design.
-                        His attention to detail and professional approach exceeded our expectations."
-                    </p>
-                    <div class="flex items-center justify-center space-x-4">
-                        <div
-                            class="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
-                            SW
-                        </div>
-                        <div>
-                            <p class="text-white font-semibold">Sarah Williams</p>
-                            <p class="text-slate-400 text-sm">Healthcare Director</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-professional text-center" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="text-blue-400 text-5xl mb-6">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <p class="text-slate-300 text-lg leading-relaxed mb-6">
-                        "Outstanding design sense and lightning-fast delivery. Mohammad's technical
-                        expertise and communication skills make him a pleasure to work with."
-                    </p>
-                    <div class="flex items-center justify-center space-x-4">
-                        <div
-                            class="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white font-bold">
-                            DK
-                        </div>
-                        <div>
-                            <p class="text-white font-semibold">David Kim</p>
-                            <p class="text-slate-400 text-sm">Tech Startup CEO</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-professional text-center" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="text-blue-400 text-5xl mb-6">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <p class="text-slate-300 text-lg leading-relaxed mb-6">
-                        "Reliable, skilled, and professional. The website turned out perfect and
-                        our user engagement has increased significantly since the launch."
-                    </p>
-                    <div class="flex items-center justify-center space-x-4">
-                        <div
-                            class="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
-                            PN
-                        </div>
-                        <div>
-                            <p class="text-white font-semibold">Priya Nair</p>
-                            <p class="text-slate-400 text-sm">E-commerce Manager</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div id="testimonials-content" class="testimonials-grid"></div>
         </div>
     </section>
 
     <!-- Blog Section -->
-    <section id="blog" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <div class="text-center mb-16">
-                <h2 class="heading-secondary text-white mb-4">Latest Blog Posts</h2>
-                <p class="text-slate-300 text-lg max-w-3xl mx-auto">
-                    Insights, tutorials, and thoughts on modern web development
-                </p>
+    <section id="blog">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2 class="text-accent">Latest Blog Posts</h2>
+                <p>Insights, tutorials, and thoughts on modern web development</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <article class="card-professional group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative overflow-hidden rounded-lg mb-6">
-                        <img src="img/pngwing.com.png" alt="Tailwind CSS Tutorial"
-                            class="project-image w-full h-48 object-cover" />
-                        <div class="absolute top-4 left-4">
-                            <span
-                                class="px-3 py-1 bg-blue-500/90 text-white rounded-full text-sm font-semibold">Tutorial</span>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <p class="text-slate-400 text-sm mb-2">August 1, 2025</p>
-                        <h3
-                            class="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
-                            Tailwind CSS: Build Fast & Clean UIs in 2025
-                        </h3>
-                        <p class="text-slate-300 leading-relaxed">
-                            Discover why Tailwind CSS remains the fastest way to build responsive,
-                            maintainable user interfaces with modern development practices.
-                        </p>
-                    </div>
-                    <a href="#blog-post1"
-                        class="text-blue-400 hover:text-blue-300 font-semibold transition-colors duration-300">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </article>
-
-                <article class="card-professional group cursor-pointer" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative overflow-hidden rounded-lg mb-6">
-                        <img src="img/angular-react.png" alt="React vs Angular"
-                            class="project-image w-full h-48 object-cover" />
-                        <div class="absolute top-4 left-4">
-                            <span
-                                class="px-3 py-1 bg-purple-500/90 text-white rounded-full text-sm font-semibold">Comparison</span>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <p class="text-slate-400 text-sm mb-2">July 15, 2025</p>
-                        <h3
-                            class="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
-                            React or Angular in 2025? A Developer's Guide
-                        </h3>
-                        <p class="text-slate-300 leading-relaxed">
-                            A comprehensive comparison to help developers choose the right frontend
-                            framework for their next project based on real-world scenarios.
-                        </p>
-                    </div>
-                    <a href="#blog-post2"
-                        class="text-blue-400 hover:text-blue-300 font-semibold transition-colors duration-300">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </article>
-
-                <article class="card-professional group cursor-pointer" data-aos="fade-up" data-aos-delay="300">
-                    <div class="relative overflow-hidden rounded-lg mb-6">
-                        <img src="img/download.png" alt="Web Performance"
-                            class="project-image w-full h-48 object-cover" />
-                        <div class="absolute top-4 left-4">
-                            <span
-                                class="px-3 py-1 bg-green-500/90 text-white rounded-full text-sm font-semibold">Performance</span>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <p class="text-slate-400 text-sm mb-2">June 30, 2025</p>
-                        <h3
-                            class="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">
-                            Web Performance: Speed Matters More Than Ever
-                        </h3>
-                        <p class="text-slate-300 leading-relaxed">
-                            Essential techniques for optimizing website performance, improving Core Web Vitals,
-                            and delivering exceptional user experiences.
-                        </p>
-                    </div>
-                    <a href="#blog-post3"
-                        class="text-blue-400 hover:text-blue-300 font-semibold transition-colors duration-300">
-                        Read More <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Post Detail Sections (Hidden by default) -->
-    <section id="blog-post1" class="py-20 hidden">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <article class="card-professional">
-                <div class="mb-8">
-                    <img src="img/pngwing.com.png" alt="Tailwind CSS Development"
-                        class="project-image w-full h-64 object-cover rounded-xl mb-6" />
-                    <div class="flex items-center space-x-4 mb-6">
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Tutorial</span>
-                        <span class="text-slate-400">August 1, 2025</span>
-                        <span class="text-slate-400">5 min read</span>
-                    </div>
-                    <h1 class="heading-secondary text-white mb-6">Tailwind CSS: Build Fast & Clean UIs in 2025</h1>
-                </div>
-
-                <div class="prose prose-lg prose-invert max-w-none">
-                    <p class="text-slate-300 text-lg leading-relaxed mb-6">
-                        Tailwind CSS continues to revolutionize how developers approach styling in 2025.
-                        Its utility-first methodology has proven to be not just a trend, but a fundamental
-                        shift in how we think about CSS architecture and maintainability.
-                    </p>
-
-                    <h3 class="text-xl font-bold text-white mb-4">Why Tailwind Still Dominates</h3>
-                    <p class="text-slate-300 leading-relaxed mb-6">
-                        The utility-first approach reduces custom CSS bloat and keeps your codebase clean and
-                        predictable.
-                        With Tailwind, you're writing less custom CSS and more semantic, reusable utility classes that
-                        scale beautifully across large applications.
-                    </p>
-
-                    <h3 class="text-xl font-bold text-white mb-4">Best Practices for 2025</h3>
-                    <p class="text-slate-300 leading-relaxed mb-6">
-                        Combine Tailwind with modern frameworks like React or Angular to build scalable component
-                        libraries.
-                        Use PostCSS plugins and PurgeCSS to keep build sizes minimal while maintaining design
-                        consistency
-                        across your entire application.
-                    </p>
-
-                    <p class="text-slate-300 leading-relaxed mb-8">
-                        If you're prioritizing development speed, design consistency, and long-term maintainability—
-                        Tailwind CSS remains the unmatched choice for modern web development.
-                    </p>
-                </div>
-
-                <div class="border-t border-slate-700 pt-6">
-                    <a href="#blog" class="btn-primary text-white">
-                        <i class="fas fa-arrow-left mr-2"></i>Back to Blog
-                    </a>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <section id="blog-post2" class="py-20 hidden">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <article class="card-professional">
-                <div class="mb-8">
-                    <img src="img/angular-react.png" alt="React vs Angular Development"
-                        class="project-image w-full h-64 object-cover rounded-xl mb-6" />
-                    <div class="flex items-center space-x-4 mb-6">
-                        <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm">Comparison</span>
-                        <span class="text-slate-400">July 15, 2025</span>
-                        <span class="text-slate-400">8 min read</span>
-                    </div>
-                    <h1 class="heading-secondary text-white mb-6">React or Angular in 2025? A Developer's Guide</h1>
-                </div>
-
-                <div class="prose prose-lg prose-invert max-w-none">
-                    <p class="text-slate-300 text-lg leading-relaxed mb-6">
-                        The eternal debate continues: React or Angular? In 2025, both frameworks have evolved
-                        significantly, each offering unique advantages for different project requirements and team
-                        dynamics.
-                    </p>
-
-                    <h3 class="text-xl font-bold text-white mb-4">React: Flexibility and Ecosystem</h3>
-                    <p class="text-slate-300 leading-relaxed mb-6">
-                        React's strength lies in its flexibility and massive ecosystem. With its component-based
-                        architecture
-                        and virtual DOM, React excels in rapid prototyping, startup environments, and projects requiring
-                        custom solutions. The learning curve is gentler, making it ideal for teams transitioning to
-                        modern frameworks.
-                    </p>
-
-                    <h3 class="text-xl font-bold text-white mb-4">Angular: Structure and Enterprise Features</h3>
-                    <p class="text-slate-300 leading-relaxed mb-6">
-                        Angular provides a complete toolkit with built-in features like routing, forms, HTTP client, and
-                        dependency injection. It's perfect for large-scale enterprise applications where structure,
-                        type safety, and comprehensive tooling are priorities.
-                    </p>
-
-                    <h3 class="text-xl font-bold text-white mb-4">Making the Right Choice</h3>
-                    <p class="text-slate-300 leading-relaxed mb-8">
-                        Choose React for flexibility, rapid development, and smaller to medium-sized projects.
-                        Choose Angular for enterprise applications, large teams, and projects requiring comprehensive
-                        built-in features. The best choice ultimately depends on your team's expertise, project scale,
-                        and long-term maintenance requirements.
-                    </p>
-                </div>
-
-                <div class="border-t border-slate-700 pt-6">
-                    <a href="#blog" class="btn-primary text-white">
-                        <i class="fas fa-arrow-left mr-2"></i>Back to Blog
-                    </a>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <section id="blog-post3" class="py-20 hidden">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <article class="card-professional">
-                <div class="mb-8">
-                    <img src="img/download.png" alt="Web Performance Optimization"
-                        class="project-image w-full h-64 object-cover rounded-xl mb-6" />
-                    <div class="flex items-center space-x-4 mb-6">
-                        <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">Performance</span>
-                        <span class="text-slate-400">June 30, 2025</span>
-                        <span class="text-slate-400">6 min read</span>
-                    </div>
-                    <h1 class="heading-secondary text-white mb-6">Web Performance: Speed Matters More Than Ever</h1>
-                </div>
-
-                <div class="prose prose-lg prose-invert max-w-none">
-                    <p class="text-slate-300 text-lg leading-relaxed mb-6">
-                        In 2025, web performance isn't just about user experience—it's a critical factor for SEO
-                        rankings,
-                        conversion rates, and overall business success. Users expect lightning-fast experiences,
-                        and search engines reward sites that deliver them.
-                    </p>
-
-                    <h3 class="text-xl font-bold text-white mb-4">Core Web Vitals and Beyond</h3>
-                    <p class="text-slate-300 leading-relaxed mb-6">
-                        Focus on optimizing Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative
-                        Layout Shift (CLS).
-                        Use tools like Lighthouse, PageSpeed Insights, and Web Vitals extension to monitor and improve
-                        these metrics continuously.
-                    </p>
-
-                    <h3 class="text-xl font-bold text-white mb-4">Modern Optimization Techniques</h3>
-                    <p class="text-slate-300 leading-relaxed mb-6">
-                        Implement lazy loading for images and components, use code splitting to reduce initial bundle
-                        sizes,
-                        and leverage modern image formats like WebP and AVIF. Consider using CDNs and edge computing for
-                        global performance improvements.
-                    </p>
-
-                    <h3 class="text-xl font-bold text-white mb-4">The Business Impact</h3>
-                    <p class="text-slate-300 leading-relaxed mb-8">
-                        Better performance directly translates to improved user engagement, higher conversion rates,
-                        and better search engine rankings. In today's competitive digital landscape, performance
-                        optimization isn't optional—it's essential for business success.
-                    </p>
-                </div>
-
-                <div class="border-t border-slate-700 pt-6">
-                    <a href="#blog" class="btn-primary text-white">
-                        <i class="fas fa-arrow-left mr-2"></i>Back to Blog
-                    </a>
-                </div>
-            </article>
+            <div id="blog-content" class="blog-grid"></div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <div class="text-center mb-16">
-                <h2 class="heading-secondary text-white mb-4">Let's Work Together</h2>
-                <p class="text-slate-300 text-lg max-w-3xl mx-auto">
-                    Ready to bring your ideas to life? Let's discuss your project and create something amazing together.
-                </p>
+    <section id="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2 class="text-accent">Let's Work Together</h2>
+                <p>Ready to bring your ideas to life? Let's discuss your project and create something amazing together.</p>
             </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div data-aos="fade-right">
-                    <div class="card-professional">
-                        <h3 class="text-2xl font-bold text-white mb-6">Get In Touch</h3>
-                        <p class="text-slate-300 leading-relaxed mb-8">
-                            I'm always excited to work on new projects and collaborate with amazing people.
-                            Whether you need a complete website, want to improve your existing application,
-                            or just have questions about web development, I'm here to help.
-                        </p>
-
-                        <div class="space-y-6">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-envelope text-blue-400"></i>
-                                </div>
-                                <div>
-                                    <p class="text-white font-semibold">Email</p>
-                                    <a href="mailto:mohammadmuzzamil7770@gmail.com"
-                                        class="text-slate-300 hover:text-blue-400 transition-colors">
-                                        mohammadmuzzamil7770@gmail.com
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center">
-                                    <i class="fab fa-whatsapp text-green-400"></i>
-                                </div>
-                                <div>
-                                    <p class="text-white font-semibold">WhatsApp</p>
-                                    <a href="https://wa.me/+923068667770"
-                                        class="text-slate-300 hover:text-green-400 transition-colors">
-                                        +92 306 8667770
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center">
-                                    <i class="fab fa-linkedin text-blue-500"></i>
-                                </div>
-                                <div>
-                                    <p class="text-white font-semibold">LinkedIn</p>
-                                    <a href="https://www.linkedin.com/in/muzzamil-dev"
-                                        class="text-slate-300 hover:text-blue-500 transition-colors">
-                                        Muhammad Muzzamil
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div data-aos="fade-left">
-                    <form class="card-professional space-y-6">
-                        <div>
-                            <label for="name" class="block text-white font-semibold mb-2">Your Name</label>
-                            <input type="text" id="name" name="name" required class="form-input w-full"
-                                placeholder="Enter your full name" />
-                        </div>
-
-                        <div>
-                            <label for="email" class="block text-white font-semibold mb-2">Email Address</label>
-                            <input type="email" id="email" name="email" required class="form-input w-full"
-                                placeholder="your.email@example.com" />
-                        </div>
-
-                        <div>
-                            <label for="subject" class="block text-white font-semibold mb-2">Subject</label>
-                            <input type="text" id="subject" name="subject" required class="form-input w-full"
-                                placeholder="Project inquiry, collaboration, etc." />
-                        </div>
-
-                        <div>
-                            <label for="message" class="block text-white font-semibold mb-2">Message</label>
-                            <textarea id="message" name="message" rows="5" required
-                                class="form-input w-full resize-none"
-                                placeholder="Tell me about your project, timeline, and requirements..."></textarea>
-                        </div>
-
-                        <button type="submit"
-                            class="btn-primary w-full text-white flex items-center justify-center space-x-2">
-                            <i class="fas fa-paper-plane"></i>
-                            <span>Send Message</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
+            <div id="contact-content" class="contact-grid"></div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900/50 border-t border-slate-800 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-            <div class="text-center">
-                <h3 class="text-2xl font-bold text-gradient mb-4">Muhammad Muzzamil</h3>
-                <p class="text-slate-300 text-lg mb-8 max-w-2xl mx-auto">
-                    Software Engineer specializing in Angular-based front-end development for scalable web applications, 
-                    particularly in healthcare systems. Building high-performance, user-centric dashboards and enterprise-grade platforms.
-                </p>
-
-                <div class="flex justify-center space-x-6 mb-8">
-                    <a href="https://github.com/muzzamil7770" target="_blank" rel="noopener noreferrer"
-                        class="footer-icon text-slate-400 hover:text-white">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/muzzamil-dev" target="_blank"
-                        rel="noopener noreferrer" class="footer-icon text-slate-400 hover:text-blue-500">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://wa.me/+923068667770" target="_blank" rel="noopener noreferrer"
-                        class="footer-icon text-slate-400 hover:text-green-500">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="mailto:mohammadmuzzamil7770@gmail.com"
-                        class="footer-icon text-slate-400 hover:text-red-500">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-
-                <div class="border-t border-slate-800 pt-8">
-                    <p class="text-slate-400">
-                        &copy; 2026 Muhammad Muzzamil. All rights reserved. Built with passion and modern web
-                        technologies.
-                    </p>
-                </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div id="footer-content"></div>
             </div>
         </div>
     </footer>
 
+    <!-- Project Detail Modal -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-project-title"></h2>
+                <button class="modal-close" id="modal-project-close" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-project-body"></div>
+        </div>
+    </div>
+
+    <!-- Blog Detail Modal -->
+    <div class="modal-overlay" id="blog-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-blog-title"></h2>
+                <button class="modal-close" id="modal-blog-close" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-blog-body"></div>
+        </div>
+    </div>
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <!-- JavaScript -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize AOS
-            AOS.init({
-                duration: 1000,
-                once: false,
-                offset: 100,
-                easing: 'ease-out-cubic'
-            });
-
-            // Typed.js initialization
-            new Typed('#typed', {
-                strings: [
-                    'Software Engineer',
-                    'Angular Developer',
-                    'Full-Stack Web Developer',
-                    'Healthcare Systems Specialist',
-                    'Performance Optimizer'
-                ],
-                typeSpeed: 80,
-                backSpeed: 50,
-                backDelay: 2000,
-                loop: true,
-                showCursor: true,
-                cursorChar: '|'
-            });
-
-            // Theme toggle functionality
-            const themeToggle = document.getElementById('theme-toggle');
-            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-            const toggleCircles = document.querySelectorAll('.toggle-circle');
-
-            const setTheme = (theme) => {
-                document.body.classList.toggle('light', theme === 'light');
-                toggleCircles.forEach(circle => {
-                    circle.innerHTML = theme === 'light' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-                });
-                localStorage.setItem('theme', theme);
-            };
-
-            const toggleTheme = () => {
-                const currentTheme = document.body.classList.contains('light') ? 'light' : 'dark';
-                setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-            };
-
-            // Load saved theme
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            setTheme(savedTheme);
-
-            // Theme toggle event listeners
-            themeToggle?.addEventListener('click', toggleTheme);
-            themeToggleMobile?.addEventListener('click', toggleTheme);
-
-            // Scroll progress indicator
-            const scrollProgress = document.getElementById('scroll-progress');
-            window.addEventListener('scroll', () => {
-                const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-                scrollProgress.style.width = scrolled + '%';
-            });
-
-            // Navigation functionality
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const mainSectionIds = ['home', 'about', 'services', 'projects', 'testimonials', 'blog', 'contact'];
-            const aboutSectionIds = ['about', 'skills', 'experience', 'education'];
-
-            // Intersection Observer for active navigation
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        navLinks.forEach(link => {
-                            link.classList.remove('active');
-                            const href = link.getAttribute('href')?.substring(1);
-                            if (href === entry.target.id ||
-                                (href === 'projects' && entry.target.id.startsWith('project')) ||
-                                (href === 'blog' && entry.target.id.startsWith('blog-post'))) {
-                                link.classList.add('active');
-                            }
-                        });
-
-                        // Update About dropdown text
-                        const aboutNav = document.getElementById('about-nav');
-                        if (aboutSectionIds.includes(entry.target.id)) {
-                            const sectionName = entry.target.id.charAt(0).toUpperCase() + entry.target.id.slice(1);
-                            aboutNav.textContent = entry.target.id === 'about' ? 'About' : `About → ${sectionName}`;
-                        } else if (!aboutSectionIds.includes(entry.target.id)) {
-                            aboutNav.textContent = 'About';
-                        }
-                    }
-                });
-            }, { threshold: 0.3 });
-
-            sections.forEach(section => observer.observe(section));
-
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // Project and blog post navigation
-            const setupDetailNavigation = (linkSelector, sectionSelector, mainSectionId) => {
-                const links = document.querySelectorAll(linkSelector);
-                const sections = document.querySelectorAll(sectionSelector);
-                const mainSection = document.querySelector(`#${mainSectionId}`);
-
-                links.forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const targetId = link.getAttribute('href').substring(1);
-                        const targetSection = document.getElementById(targetId);
-
-                        sections.forEach(section => section.classList.add('hidden'));
-                        mainSection?.classList.add('hidden');
-                        targetSection?.classList.remove('hidden');
-
-                        targetSection?.scrollIntoView({ behavior: 'smooth' });
-                    });
-                });
-
-                // Back to main section links
-                document.querySelectorAll(`a[href="#${mainSectionId}"]`).forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        sections.forEach(section => section.classList.add('hidden'));
-                        mainSection?.classList.remove('hidden');
-                        mainSection?.scrollIntoView({ behavior: 'smooth' });
-                    });
-                });
-            };
-
-            setupDetailNavigation('a[href^="#project"]', 'section[id^="project"]', 'projects');
-            setupDetailNavigation('a[href^="#blog-post"]', 'section[id^="blog-post"]', 'blog');
-
-            // Navigation arrows
-            const prevBtn = document.getElementById('prev-section');
-            const nextBtn = document.getElementById('next-section');
-
-            const navigateSection = (direction) => {
-                const activeLink = document.querySelector('.nav-link.active');
-                if (!activeLink) return;
-
-                const currentId = activeLink.getAttribute('href').substring(1);
-                const currentIndex = mainSectionIds.indexOf(currentId);
-
-                if (direction === 'prev' && currentIndex > 0) {
-                    const prevSection = document.getElementById(mainSectionIds[currentIndex - 1]);
-                    prevSection?.scrollIntoView({ behavior: 'smooth' });
-                } else if (direction === 'next' && currentIndex < mainSectionIds.length - 1) {
-                    const nextSection = document.getElementById(mainSectionIds[currentIndex + 1]);
-                    nextSection?.scrollIntoView({ behavior: 'smooth' });
-                }
-            };
-
-            prevBtn?.addEventListener('click', () => navigateSection('prev'));
-            nextBtn?.addEventListener('click', () => navigateSection('next'));
-
-            // Scroll to top button
-            const scrollTopBtn = document.getElementById('scroll-to-top');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) {
-                    scrollTopBtn?.classList.remove('opacity-0', 'translate-y-16');
-                    scrollTopBtn?.classList.add('opacity-100', 'translate-y-0');
-                } else {
-                    scrollTopBtn?.classList.add('opacity-0', 'translate-y-16');
-                    scrollTopBtn?.classList.remove('opacity-100', 'translate-y-0');
-                }
-            });
-
-            scrollTopBtn?.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // Animate progress bars when in view
-            const animateProgressBars = () => {
-                const progressBars = document.querySelectorAll('.progress-fill');
-                progressBars.forEach(bar => {
-                    const rect = bar.getBoundingClientRect();
-                    if (rect.top < window.innerHeight && rect.bottom > 0) {
-                        const width = bar.getAttribute('data-width');
-                        bar.style.width = width + '%';
-                    }
-                });
-            };
-
-            window.addEventListener('scroll', animateProgressBars);
-            animateProgressBars(); // Initial check
-
-            // Mobile menu toggle
-            const menuToggle = document.getElementById('menu-toggle');
-            const mobileMenu = document.querySelector('.mobile-menu');
-
-            menuToggle?.addEventListener('change', () => {
-                if (menuToggle.checked) {
-                    mobileMenu?.classList.remove('max-h-0', 'opacity-0');
-                    mobileMenu?.classList.add('max-h-96', 'opacity-100');
-                } else {
-                    mobileMenu?.classList.add('max-h-0', 'opacity-0');
-                    mobileMenu?.classList.remove('max-h-96', 'opacity-100');
-                }
-            });
-
-            // Close mobile menu when clicking on links
-            document.querySelectorAll('.mobile-menu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (menuToggle) {
-                        menuToggle.checked = false;
-                        mobileMenu?.classList.add('max-h-0', 'opacity-0');
-                        mobileMenu?.classList.remove('max-h-96', 'opacity-100');
-                    }
-                });
-            });
-
-            // Form submission
-            const contactForm = document.querySelector('#contact form');
-            contactForm?.addEventListener('submit', (e) => {
-                e.preventDefault();
-
-                // Get form data
-                const formData = new FormData(contactForm);
-                const name = formData.get('name');
-                const email = formData.get('email');
-                const subject = formData.get('subject');
-                const message = formData.get('message');
-
-                // Create mailto link
-                const mailtoLink = `mailto:mohammadmuzzamil7770@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-
-                // Open email client
-                window.location.href = mailtoLink;
-
-                // Show success message (you can customize this)
-                alert('Thank you for your message! Your email client should open now.');
-
-                // Reset form
-                contactForm.reset();
-            });
-
-            // Add loading animation to buttons
-            document.querySelectorAll('.btn-primary').forEach(btn => {
-                btn.addEventListener('click', function () {
-                    if (this.type !== 'submit') return;
-
-                    const originalText = this.innerHTML;
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
-                    this.disabled = true;
-
-                    setTimeout(() => {
-                        this.innerHTML = originalText;
-                        this.disabled = false;
-                    }, 2000);
-                });
-            });
-
-            // Parallax effect for hero section
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const parallaxElements = document.querySelectorAll('.animate-float');
-
-                parallaxElements.forEach(element => {
-                    const speed = 0.5;
-                    element.style.transform = `translateY(${scrolled * speed}px)`;
-                });
-            });
-
-            // Add intersection observer for animations
-            const animateOnScroll = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.card-professional').forEach(card => {
-                animateOnScroll.observe(card);
-            });
-        });
-    </script>
+    <script src="./js/data-const.js"></script>
+    <script src="./js/theme-manage.js"></script>
+    <script src="./js/render-functions.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 
 </html>

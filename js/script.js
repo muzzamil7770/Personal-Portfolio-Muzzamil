@@ -405,20 +405,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Button loading animation
-    document.querySelectorAll('.btn-primary').forEach(btn => {
-        btn.addEventListener('click', function () {
-            if (this.type !== 'submit') return;
-            const originalText = this.innerHTML;
-            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            this.disabled = true;
-            setTimeout(() => {
-                this.innerHTML = originalText;
-                this.disabled = false;
-            }, 2000);
-        });
-    });
-
     // Navbar background on scroll
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {

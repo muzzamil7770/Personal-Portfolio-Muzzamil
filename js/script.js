@@ -89,6 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render all content
     renderAll();
 
+    // Setup form handlers (MUST be after renderAll)
+    setupFormHandlers();
+
     // Initialize Animated Background (Desktop only)
     initAnimatedBackground();
 

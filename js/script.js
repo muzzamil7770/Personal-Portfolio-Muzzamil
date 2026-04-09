@@ -235,21 +235,178 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial check
     setTimeout(animateProgressBars, 500);
 
-    // Form submission
-    const contactForm = document.querySelector('.contact-form');
-    contactForm?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const formData = new FormData(contactForm);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const subject = formData.get('subject');
-        const message = formData.get('message');
+    // ============================================
+    // FORM EVENT LISTENERS - SETUP FUNCTION
+    // ============================================
+    
+    function setupFormHandlers() {
+        console.log('🔧 Setting up form handlers...');
+        
+        // ============================================
+        // CONTACT FORM - FORMSPREE INTEGRATION
+        // ============================================
+        
+        const contactForm = document.getElementById('contact-form');
+        const contactSubmitBtn = document.getElementById('contact-submit-btn');
+        const contactSuccess = document.getElementById('contact-form-success');
+        const contactError = document.getElementById('contact-form-error');
 
-        const mailtoLink = `mailto:${SITE_DATA.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-        window.location.href = mailtoLink;
-        alert('Thank you for your message! Your email client should open now.');
-        contactForm.reset();
-    });
+        console.log('📋 Contact form found:', contactForm ? 'YES' : 'NO');
+
+        if (!contactForm) {
+            console.error('❌ Contact form not found in DOM!');
+            return;
+        }
+
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            console.log('📤 Contact form submit triggered!');
+            
+            // Show loading state
+            const originalBtnText = contactSubmitBtn.innerHTML;
+            contactSubmitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            contactSubmitBtn.disabled = true;
+            
+            // Hide previous messages
+            contactSuccess.style.display = 'none';
+            contactError.style.display = 'none';
+
+            try {
+                const formData = new FormData(contactForm);
+                
+                console.log('📤 Sending to:', contactForm.action);
+                
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                console.log('✅ Response status:', response.status);
+                
+                if (response.ok) {
+                    // Show success message
+                    console.log('✅ Form submitted successfully!');
+                    contactSuccess.style.display = 'block';
+                    contactForm.reset();
+                    
+                    // Close any open modals
+                    window.closeHireMeModal();
+                    
+                    // Wait 2 seconds then redirect
+                    setTimeout(() => {
+                        console.log('🔄 Redirecting to thanks.html');
+                        window.location.href = 'thanks.html';
+                    }, 2000);
+                } else {
+                    // Error - get details
+                    let errorMessage = 'Unknown error occurred';
+                    try {
+                        const errorData = await response.json();
+                        errorMessage = errorData.error || errorData.message || JSON.stringify(errorData);
+                        console.error('❌ Form error:', errorData);
+                    } catch (e) {
+                        errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+                    }
+                    console.error('❌ Error:', errorMessage);
+                    contactError.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${errorMessage}`;
+                    contactError.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('❌ Network error:', error);
+                contactError.innerHTML = `<i class="fas fa-exclamation-circle"></i> Network error: ${error.message}`;
+                contactError.style.display = 'block';
+            } finally {
+                // Restore button
+                contactSubmitBtn.innerHTML = originalBtnText;
+                contactSubmitBtn.disabled = false;
+            }
+        });
+
+        // ============================================
+        // HIRE ME FORM
+        // ============================================
+        
+        const hireForm = document.getElementById('hire-form');
+        const hireSubmitBtn = document.getElementById('hire-submit-btn');
+        const hireSuccess = document.getElementById('hire-form-success');
+        const hireError = document.getElementById('hire-form-error');
+        const hireServicesInput = document.getElementById('hire-services');
+
+        console.log('💼 Hire form found:', hireForm ? 'YES' : 'NO');
+
+        if (hireForm) {
+            hireForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                console.log('📤 Hire form submit triggered!');
+                
+                // Update hidden services field
+                hireServicesInput.value = selectedServices.join(', ');
+                
+                // Show loading state
+                const originalBtnText = hireSubmitBtn.innerHTML;
+                hireSubmitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                hireSubmitBtn.disabled = true;
+                
+                // Hide previous messages
+                hireSuccess.style.display = 'none';
+                hireError.style.display = 'none';
+
+                try {
+                    const formData = new FormData(hireForm);
+                    
+                    console.log('📤 Sending to:', hireForm.action);
+                    
+                    const response = await fetch(hireForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    console.log('✅ Response status:', response.status);
+                    
+                    if (response.ok) {
+                        console.log('✅ Hire form submitted successfully!');
+                        hireSuccess.style.display = 'block';
+                        hireForm.reset();
+                        selectedServices = [];
+                        document.querySelectorAll('.hire-service-item').forEach(item => {
+                            item.classList.remove('selected');
+                        });
+                        
+                        // Wait 2 seconds then redirect
+                        setTimeout(() => {
+                            console.log('🔄 Redirecting to thanks.html');
+                            window.location.href = 'thanks.html';
+                        }, 2000);
+                    } else {
+                        let errorMessage = 'Unknown error occurred';
+                        try {
+                            const errorData = await response.json();
+                            errorMessage = errorData.error || errorData.message || JSON.stringify(errorData);
+                            console.error('❌ Hire form error:', errorData);
+                        } catch (e) {
+                            errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+                        }
+                        console.error('❌ Error:', errorMessage);
+                        hireError.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${errorMessage}`;
+                        hireError.style.display = 'block';
+                    }
+                } catch (error) {
+                    console.error('❌ Network error:', error);
+                    hireError.innerHTML = `<i class="fas fa-exclamation-circle"></i> Network error: ${error.message}`;
+                    hireError.style.display = 'block';
+                } finally {
+                    hireSubmitBtn.innerHTML = originalBtnText;
+                    hireSubmitBtn.disabled = false;
+                }
+            });
+        }
+    }
 
     // Button loading animation
     document.querySelectorAll('.btn-primary').forEach(btn => {
@@ -379,9 +536,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.closeHireMeModal = function() {
-        hireMeModal.classList.remove('active');
+        if (hireMeModal) {
+            hireMeModal.classList.remove('active');
+        }
         document.body.classList.remove('modal-open');
-        hireForm.reset();
+        if (hireForm) hireForm.reset();
         selectedServices = [];
         document.querySelectorAll('.hire-service-item').forEach(item => {
             item.classList.remove('selected');
@@ -411,29 +570,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Hire form submission
-    hireForm?.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const name = document.getElementById('hire-name').value;
-        const email = document.getElementById('hire-email').value;
-        const budget = document.getElementById('hire-budget').value;
-        const message = document.getElementById('hire-message').value;
-        
-        const servicesText = selectedServices.map(s => s.replace('-', ' ')).join(', ');
-        const fullMessage = servicesText ? `Services: ${servicesText}\n\nBudget: ${budget}\n\n${message}` : `Budget: ${budget}\n\n${message}`;
-        
-        const mailtoLink = `mailto:${SITE_DATA.contact.email}?subject=${encodeURIComponent('Hire Request from ' + name)}&body=${encodeURIComponent(fullMessage)}`;
-        window.location.href = mailtoLink;
-        
-        alert('Thank you for your interest! Your email client should open now.');
-        window.closeHireMeModal();
-    });
-
     // ============================================
     // UPWORK WIDGET
     // ============================================
-    
+
     const upworkToggle = document.getElementById('upwork-toggle');
     const upworkPopup = document.getElementById('upwork-popup');
 

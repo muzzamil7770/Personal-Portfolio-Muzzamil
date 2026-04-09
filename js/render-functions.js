@@ -269,7 +269,11 @@ function renderContact() {
             </div>
         </div>
 
-        <form class="contact-form" data-aos="fade-left">
+        <form class="contact-form" id="contact-form" action="https://formspree.io/f/mdapvwkl" method="POST" data-aos="fade-left">
+            <input type="hidden" name="_next" value="thanks.html" />
+            <input type="hidden" name="_subject" value="New Contact Form Submission - Portfolio" />
+            <input type="hidden" name="_captcha" value="false" />
+            
             <div class="form-group">
                 <label for="name" class="form-label">Your Name</label>
                 <input type="text" id="name" name="name" required class="form-input" placeholder="Enter your full name" />
@@ -290,10 +294,18 @@ function renderContact() {
                 <textarea id="message" name="message" required class="form-input" placeholder="Tell me about your project, timeline, and requirements..."></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <button type="submit" class="btn btn-primary" id="contact-submit-btn" style="width: 100%;">
                 <i class="fas fa-paper-plane"></i>
                 <span>Send Message</span>
             </button>
+
+            <div id="contact-form-success" style="display: none; margin-top: 1rem; padding: 1rem; background: rgba(34, 197, 94, 0.1); border: 1px solid #22c55e; border-radius: var(--radius-md); color: #22c55e; text-align: center;">
+                <i class="fas fa-check-circle"></i> Message sent successfully! I'll get back to you soon.
+            </div>
+
+            <div id="contact-form-error" style="display: none; margin-top: 1rem; padding: 1rem; background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; border-radius: var(--radius-md); color: #ef4444; text-align: center;">
+                <i class="fas fa-exclamation-circle"></i> Oops! Something went wrong. Please try again.
+            </div>
         </form>
     `;
 }

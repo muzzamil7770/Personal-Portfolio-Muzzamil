@@ -9,6 +9,9 @@ function initAnimatedBackground() {
     const container = document.getElementById('animated-bg');
     if (!container) return;
 
+    // Clear existing elements
+    container.innerHTML = '';
+
     // Developer-themed symbols and code snippets
     const symbols = [
         '</>', '{ }', '( )', '=>', 'const', 'function',
@@ -29,27 +32,28 @@ function initAnimatedBackground() {
         '...', '=>', '()', '{}', '[]', '<>'
     ];
 
-    const elementCount = 25; // Number of floating elements
+    const elementCount = 15;
 
     for (let i = 0; i < elementCount; i++) {
         const element = document.createElement('div');
         element.className = 'animated-bg-element';
         element.textContent = symbols[Math.floor(Math.random() * symbols.length)];
         
-        // Random positioning
+        // Random horizontal position
         element.style.left = Math.random() * 100 + '%';
-        element.style.fontSize = (Math.random() * 10 + 12) + 'px'; // 12-22px
+        element.style.fontSize = (Math.random() * 10 + 12) + 'px';
         
-        // Random animation duration (15-40 seconds for slow, smooth movement)
-        const duration = Math.random() * 25 + 15;
+        // Start at random vertical positions (spread across viewport)
+        const startY = Math.random() * 100;
+        element.style.bottom = startY + 'vh';
+        
+        // Animation duration (20-35 seconds for smooth movement)
+        const duration = Math.random() * 15 + 20;
         element.style.animationDuration = duration + 's';
         
-        // Random delay so they don't all start at once
-        element.style.animationDelay = (Math.random() * duration) + 's';
-        
-        // Slight opacity variation
-        element.style.opacity = (Math.random() * 0.03 + 0.02).toString();
-        
+        // Negative delay so elements are already in motion on page load
+        element.style.animationDelay = '-' + (Math.random() * duration) + 's';
+
         container.appendChild(element);
     }
 
@@ -60,11 +64,9 @@ function initAnimatedBackground() {
         const nowDesktop = window.innerWidth >= 1024;
         
         if (nowDesktop && !isDesktop) {
-            // Switched to desktop - initialize
             isDesktop = true;
             initAnimatedBackground();
         } else if (!nowDesktop && isDesktop) {
-            // Switched to mobile/tablet - clear
             isDesktop = false;
             container.innerHTML = '';
         }
@@ -278,7 +280,174 @@ document.addEventListener('DOMContentLoaded', () => {
     // Modal close buttons
     const projectModalClose = document.getElementById('modal-project-close');
     const blogModalClose = document.getElementById('modal-blog-close');
-    
+
     projectModalClose?.addEventListener('click', closeProjectModal);
     blogModalClose?.addEventListener('click', closeBlogModal);
+
+    // ============================================
+    // FULL-SCREEN PROJECT PREVIEW
+    // ============================================
+    
+    const previewModal = document.getElementById('project-preview-modal');
+    const previewClose = document.getElementById('preview-close');
+    const previewImage = document.getElementById('preview-image');
+    const zoomIn = document.getElementById('zoom-in');
+    const zoomOut = document.getElementById('zoom-out');
+    const zoomReset = document.getElementById('zoom-reset');
+
+    let currentZoom = 1;
+
+    window.openProjectPreview = function(projectId) {
+        const project = SITE_DATA.projects.find(p => p.id === projectId);
+        if (!project) return;
+
+        window.currentPreviewProject = projectId;
+        previewImage.src = project.image;
+        previewImage.alt = project.title;
+        document.getElementById('preview-title').textContent = project.title;
+        document.getElementById('preview-description').textContent = project.description;
+        
+        const techContainer = document.getElementById('preview-tech');
+        techContainer.innerHTML = project.techs.map(tech => `<span>${tech}</span>`).join('');
+
+        currentZoom = 1;
+        previewImage.classList.remove('zoomed');
+        previewImage.style.transform = 'scale(1)';
+
+        previewModal.classList.add('active');
+        document.body.classList.add('modal-open');
+    };
+
+    window.closeProjectPreview = function() {
+        previewModal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+        currentZoom = 1;
+        previewImage.classList.remove('zoomed');
+        previewImage.style.transform = 'scale(1)';
+    };
+
+    previewClose?.addEventListener('click', window.closeProjectPreview);
+
+    previewImage?.addEventListener('click', function() {
+        currentZoom = currentZoom === 1 ? 1.5 : 1;
+        this.classList.toggle('zoomed');
+        this.style.transform = `scale(${currentZoom})`;
+    });
+
+    zoomIn?.addEventListener('click', function() {
+        currentZoom = Math.min(currentZoom + 0.25, 3);
+        previewImage.style.transform = `scale(${currentZoom})`;
+        if (currentZoom > 1) {
+            previewImage.classList.add('zoomed');
+        }
+    });
+
+    zoomOut?.addEventListener('click', function() {
+        currentZoom = Math.max(currentZoom - 0.25, 0.5);
+        previewImage.style.transform = `scale(${currentZoom})`;
+        if (currentZoom <= 1) {
+            previewImage.classList.remove('zoomed');
+        }
+    });
+
+    zoomReset?.addEventListener('click', function() {
+        currentZoom = 1;
+        previewImage.style.transform = 'scale(1)';
+        previewImage.classList.remove('zoomed');
+    });
+
+    // Close preview on background click
+    previewModal?.addEventListener('click', function(e) {
+        if (e.target === previewModal) {
+            window.closeProjectPreview();
+        }
+    });
+
+    // ============================================
+    // HIRE ME MODAL
+    // ============================================
+    
+    const hireMeModal = document.getElementById('hire-me-modal');
+    const hireMeClose = document.getElementById('hire-me-close');
+    const hireForm = document.getElementById('hire-form');
+    const hireServicesGrid = document.getElementById('hire-services-grid');
+    let selectedServices = [];
+
+    window.openHireMeModal = function() {
+        hireMeModal.classList.add('active');
+        document.body.classList.add('modal-open');
+    };
+
+    window.closeHireMeModal = function() {
+        hireMeModal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+        hireForm.reset();
+        selectedServices = [];
+        document.querySelectorAll('.hire-service-item').forEach(item => {
+            item.classList.remove('selected');
+        });
+    };
+
+    hireMeClose?.addEventListener('click', window.closeHireMeModal);
+
+    hireMeModal?.addEventListener('click', function(e) {
+        if (e.target === hireMeModal) {
+            window.closeHireMeModal();
+        }
+    });
+
+    // Service selection
+    hireServicesGrid?.addEventListener('click', function(e) {
+        const item = e.target.closest('.hire-service-item');
+        if (!item) return;
+
+        item.classList.toggle('selected');
+        const service = item.dataset.service;
+        
+        if (selectedServices.includes(service)) {
+            selectedServices = selectedServices.filter(s => s !== service);
+        } else {
+            selectedServices.push(service);
+        }
+    });
+
+    // Hire form submission
+    hireForm?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('hire-name').value;
+        const email = document.getElementById('hire-email').value;
+        const budget = document.getElementById('hire-budget').value;
+        const message = document.getElementById('hire-message').value;
+        
+        const servicesText = selectedServices.map(s => s.replace('-', ' ')).join(', ');
+        const fullMessage = servicesText ? `Services: ${servicesText}\n\nBudget: ${budget}\n\n${message}` : `Budget: ${budget}\n\n${message}`;
+        
+        const mailtoLink = `mailto:${SITE_DATA.contact.email}?subject=${encodeURIComponent('Hire Request from ' + name)}&body=${encodeURIComponent(fullMessage)}`;
+        window.location.href = mailtoLink;
+        
+        alert('Thank you for your interest! Your email client should open now.');
+        window.closeHireMeModal();
+    });
+
+    // ============================================
+    // UPWORK WIDGET
+    // ============================================
+    
+    const upworkToggle = document.getElementById('upwork-toggle');
+    const upworkPopup = document.getElementById('upwork-popup');
+
+    upworkToggle?.addEventListener('click', function() {
+        this.classList.toggle('active');
+        upworkPopup.classList.toggle('active');
+    });
+
+    // Close Upwork popup when clicking outside
+    document.addEventListener('click', function(e) {
+        const upworkWidget = document.getElementById('upwork-widget');
+        if (upworkWidget && !upworkWidget.contains(e.target)) {
+            upworkToggle?.classList.remove('active');
+            upworkPopup?.classList.remove('active');
+        }
+    });
 });

@@ -15,7 +15,8 @@ const SITE_DATA = {
             { label: "Testimonials", href: "#testimonials" },
             { label: "Blog", href: "#blog" },
             { label: "Contact", href: "#contact" }
-        ]
+        ],
+        hireMe: { label: "Hire Me", href: "#hire" }
     },
 
     hero: {

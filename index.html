@@ -74,6 +74,9 @@
         <a href="#testimonials" class="nav-link">Testimonials</a>
         <a href="#blog" class="nav-link">Blog</a>
         <a href="#contact" class="nav-link">Contact</a>
+        <a href="#hire" class="nav-link" style="background: var(--primary); color: #ffffff; font-weight: 600; margin-top: 0.5rem;" onclick="openHireMeModal(); return false;">
+            Hire Me
+        </a>
     </div>
 
     <!-- Navigation Arrows -->
@@ -229,6 +232,155 @@
                 </button>
             </div>
             <div class="modal-body" id="modal-blog-body"></div>
+        </div>
+    </div>
+
+    <!-- Full-Screen Project Preview Modal -->
+    <div class="project-preview-modal" id="project-preview-modal">
+        <button class="preview-close" id="preview-close" aria-label="Close preview">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="project-preview-container">
+            <img src="" alt="" class="project-preview-image" id="preview-image" />
+            <div class="project-preview-info">
+                <h2 class="project-preview-title" id="preview-title"></h2>
+                <p class="project-preview-description" id="preview-description"></p>
+                <div class="project-preview-tech" id="preview-tech"></div>
+                <div class="project-preview-actions">
+                    <button class="btn btn-primary" onclick="closeProjectPreview(); openProjectModal(currentPreviewProject);">
+                        <i class="fas fa-info-circle"></i>
+                        <span>View Full Details</span>
+                    </button>
+                    <a href="" class="btn btn-outline" id="preview-live-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Live Preview</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="preview-zoom-controls">
+            <button class="zoom-btn" id="zoom-in" aria-label="Zoom in">
+                <i class="fas fa-plus"></i>
+            </button>
+            <button class="zoom-btn" id="zoom-out" aria-label="Zoom out">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button class="zoom-btn" id="zoom-reset" aria-label="Reset zoom">
+                <i class="fas fa-compress"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hire Me Modal -->
+    <div class="hire-me-modal" id="hire-me-modal">
+        <div class="hire-me-modal-content">
+            <div class="hire-me-modal-header">
+                <h2 class="hire-me-modal-title">Hire Me For Your Project</h2>
+                <button class="hire-me-modal-close" id="hire-me-close" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="hire-me-modal-body">
+                <p style="margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.7;">
+                    Tell me about your project and I'll get back to you within 24 hours with a detailed proposal and timeline.
+                </p>
+                
+                <div class="hire-services-grid" id="hire-services-grid">
+                    <div class="hire-service-item" data-service="web-development">
+                        <i class="fas fa-code"></i>
+                        <span>Web Development</span>
+                    </div>
+                    <div class="hire-service-item" data-service="angular-app">
+                        <i class="fab fa-angular"></i>
+                        <span>Angular App</span>
+                    </div>
+                    <div class="hire-service-item" data-service="react-app">
+                        <i class="fab fa-react"></i>
+                        <span>React App</span>
+                    </div>
+                    <div class="hire-service-item" data-service="ui-ux">
+                        <i class="fas fa-paint-brush"></i>
+                        <span>UI/UX Design</span>
+                    </div>
+                    <div class="hire-service-item" data-service="consulting">
+                        <i class="fas fa-comments"></i>
+                        <span>Consulting</span>
+                    </div>
+                    <div class="hire-service-item" data-service="performance">
+                        <i class="fas fa-rocket"></i>
+                        <span>Performance</span>
+                    </div>
+                </div>
+
+                <form class="hire-form" id="hire-form">
+                    <div class="hire-form-group">
+                        <label for="hire-name" class="hire-form-label">Your Name</label>
+                        <input type="text" id="hire-name" name="name" required class="hire-form-input" placeholder="Enter your full name" />
+                    </div>
+
+                    <div class="hire-form-group">
+                        <label for="hire-email" class="hire-form-label">Email Address</label>
+                        <input type="email" id="hire-email" name="email" required class="hire-form-input" placeholder="your.email@example.com" />
+                    </div>
+
+                    <div class="hire-form-group">
+                        <label for="hire-budget" class="hire-form-label">Budget Range (Optional)</label>
+                        <input type="text" id="hire-budget" name="budget" class="hire-form-input" placeholder="$500 - $1000" />
+                    </div>
+
+                    <div class="hire-form-group">
+                        <label for="hire-message" class="hire-form-label">Project Details</label>
+                        <textarea id="hire-message" name="message" required class="hire-form-input" placeholder="Tell me about your project, requirements, timeline..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Send Request</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upwork Floating Widget -->
+    <div class="upwork-widget" id="upwork-widget">
+        <button class="upwork-toggle" id="upwork-toggle" aria-label="Toggle Upwork services">
+            <i class="fas fa-briefcase"></i>
+        </button>
+        <div class="upwork-popup" id="upwork-popup">
+            <div class="upwork-popup-header">
+                <div class="upwork-logo">
+                    <i class="fas fa-check"></i>
+                </div>
+                <div>
+                    <div class="upwork-popup-title">Hire Me on Upwork</div>
+                </div>
+            </div>
+            <p class="upwork-popup-description">
+                Top-rated Angular Developer with proven track record. View my services and client testimonials.
+            </p>
+            <div class="upwork-services-list">
+                <a href="https://www.upwork.com/freelancers/~0120e689809e4af148?s=1110580755057594368" target="_blank" rel="noopener noreferrer" class="upwork-service-link">
+                    <i class="fab fa-angular"></i>
+                    <span>Angular Development</span>
+                </a>
+                <a href="https://www.upwork.com/services/product/development-it-pixel-perfect-frontend-development-landing-pages-dashboards-ecommerce-ui-1897293584935730010?ref=fl_profile" target="_blank" rel="noopener noreferrer" class="upwork-service-link">
+                    <i class="fas fa-code"></i>
+                    <span>Full-Stack Development</span>
+                </a>
+                <a href="https://www.upwork.com/services/product/development-it-pixel-perfect-frontend-development-in-tailwind-css-angular-react-1921608291601283435?image=1925619251159838711" target="_blank" rel="noopener noreferrer" class="upwork-service-link">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Responsive Web Design</span>
+                </a>
+                <a href="https://www.upwork.com/services/product/development-it-a-fast-secure-backend-with-api-endpoints-and-mysql-database-ready-to-scale-2041917207489755633?image=2041925709301265954" target="_blank" rel="noopener noreferrer" class="upwork-service-link">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Performance Optimization</span>
+                </a>
+            </div>
+            <a href="https://www.upwork.com/freelancers/~0120e689809e4af148" target="_blank" rel="noopener noreferrer" class="upwork-hire-btn">
+                <i class="fas fa-external-link-alt"></i>
+                <span>View Profile & Hire Now</span>
+            </a>
         </div>
     </div>
 

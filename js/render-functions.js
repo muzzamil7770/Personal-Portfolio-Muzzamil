@@ -6,9 +6,15 @@ function renderNavigation() {
     const navContainer = document.getElementById('nav-links');
     if (!navContainer) return;
 
-    navContainer.innerHTML = SITE_DATA.nav.links.map((link) => {
+    const navLinks = SITE_DATA.nav.links.map((link) => {
         return `<a href="${link.href}" class="nav-link">${link.label}</a>`;
     }).join('');
+
+    navContainer.innerHTML = navLinks + `
+        <a href="#hire" class="nav-link" id="hire-me-nav" style="background: var(--primary); color: #ffffff; font-weight: 600;" onclick="openHireMeModal(); return false;">
+            ${SITE_DATA.nav.hireMe.label}
+        </a>
+    `;
 }
 
 function renderHero() {
@@ -37,6 +43,10 @@ function renderHero() {
                 <a href="mailto:${SITE_DATA.hero.email}" class="btn btn-primary">
                     <i class="fas fa-envelope"></i>
                     <span>Get In Touch</span>
+                </a>
+                <a href="/doc/MUZZAMIL Full Stack Web Developer.pdf" download class="btn btn-cv">
+                    <i class="fas fa-download"></i>
+                    <span>Download CV</span>
                 </a>
                 <a href="https://wa.me/${SITE_DATA.hero.whatsapp}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
                     <i class="fab fa-whatsapp"></i>
@@ -150,15 +160,22 @@ function renderProjects() {
     if (!container) return;
 
     container.innerHTML = SITE_DATA.projects.map((project, index) => `
-        <div class="project-card" data-aos="fade-up" data-aos-delay="${index * 100}" data-project-id="${project.id}">
-            <img src="${project.image}" alt="${project.title}" class="project-image" />
+        <div class="project-card" data-aos="fade-up" data-aos-delay="${index * 100}" data-project-id="${project.id}" onclick="openProjectPreview('${project.id}')">
+            <div class="project-image-wrapper">
+                <img src="${project.image}" alt="${project.title}" class="project-image" />
+                <div class="project-image-overlay">
+                    <div class="project-preview-icon">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+            </div>
             <div class="project-content">
                 <h3 class="project-title">${project.title}</h3>
                 <p class="project-description">${project.description}</p>
                 <div class="project-tech">
                     ${project.techs.map(tech => `<span>${tech}</span>`).join('')}
                 </div>
-                <button class="project-link" onclick="openProjectModal('${project.id}')">
+                <button class="project-link" onclick="event.stopPropagation(); openProjectModal('${project.id}')">
                     View Details <i class="fas fa-arrow-right"></i>
                 </button>
             </div>
@@ -338,8 +355,15 @@ function openProjectModal(projectId) {
     ` : '';
 
     bodyEl.innerHTML = `
-        <img src="${project.image}" alt="${project.detailTitle}" class="modal-image" />
-        
+        <img src="${project.image}" alt="${project.detailTitle}" class="modal-image" style="cursor: pointer;" onclick="closeProjectModal(); setTimeout(() => openProjectPreview('${project.id}'), 300);" />
+
+        <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="closeProjectModal(); setTimeout(() => openProjectPreview('${project.id}'), 300);">
+                <i class="fas fa-expand"></i>
+                <span>Fullscreen Preview</span>
+            </button>
+        </div>
+
         <p class="modal-description">${project.detailDescription}</p>
 
         <div class="modal-section">

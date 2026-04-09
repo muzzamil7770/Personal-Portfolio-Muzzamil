@@ -763,12 +763,36 @@ section {
     border-radius: var(--radius-lg);
     overflow: hidden;
     transition: all var(--duration-base) var(--ease-out);
+    position: relative;
+    cursor: pointer;
 }
 
 .project-card:hover {
     border-color: var(--primary);
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(4, 76, 95, 0.3);
+    transform: translateY(-8px) scale(1.02);
+}
+
+.project-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(4, 76, 95, 0.1), rgba(0, 174, 220, 0.05));
+    opacity: 0;
+    transition: opacity var(--duration-base) var(--ease-out);
+    pointer-events: none;
+}
+
+.project-card:hover::after {
+    opacity: 1;
+}
+
+.project-image-wrapper {
+    position: relative;
+    overflow: hidden;
 }
 
 .project-image {
@@ -776,6 +800,49 @@ section {
     height: 200px;
     object-fit: cover;
     display: block;
+    transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.1);
+}
+
+.project-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(4, 76, 95, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.project-card:hover .project-image-overlay {
+    opacity: 1;
+}
+
+.project-preview-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.5rem;
+    transform: scale(0.8);
+    transition: transform var(--duration-base) var(--ease-out);
+}
+
+.project-card:hover .project-preview-icon {
+    transform: scale(1);
 }
 
 .project-content {
@@ -1564,6 +1631,598 @@ body.modal-open {
 }
 
 /* ============================================
+   FULL-SCREEN PROJECT PREVIEW
+   ============================================ */
+
+.project-preview-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--duration-slow) var(--ease-out);
+    padding: var(--space-4);
+}
+
+.project-preview-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.project-preview-container {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(0.9);
+    transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.project-preview-modal.active .project-preview-container {
+    transform: scale(1);
+}
+
+.project-preview-image {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    cursor: zoom-in;
+    transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.project-preview-image.zoomed {
+    transform: scale(1.5);
+    cursor: zoom-out;
+}
+
+.project-preview-info {
+    margin-top: var(--space-6);
+    text-align: center;
+    max-width: 800px;
+}
+
+.project-preview-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: var(--space-3);
+}
+
+.project-preview-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-4);
+}
+
+.project-preview-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    justify-content: center;
+    margin-bottom: var(--space-4);
+}
+
+.project-preview-tech span {
+    padding: var(--space-2) var(--space-4);
+    background: rgba(0, 174, 220, 0.2);
+    color: #00aedc;
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border: 1px solid rgba(0, 174, 220, 0.3);
+}
+
+.project-preview-actions {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.preview-close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.25rem;
+    transition: all var(--duration-fast) var(--ease-out);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.preview-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.preview-zoom-controls {
+    position: absolute;
+    bottom: var(--space-4);
+    right: var(--space-4);
+    display: flex;
+    gap: var(--space-2);
+}
+
+.zoom-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all var(--duration-fast) var(--ease-out);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.zoom-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* ============================================
+   HIRE ME MODAL
+   ============================================ */
+
+.hire-me-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--duration-base) var(--ease-out);
+}
+
+.hire-me-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hire-me-modal-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.95) translateY(20px);
+    transition: transform var(--duration-base) var(--ease-out);
+    box-shadow: var(--shadow-xl);
+}
+
+.hire-me-modal.active .hire-me-modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.hire-me-modal-header {
+    position: sticky;
+    top: 0;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--space-5) var(--space-6);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.hire-me-modal-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.hire-me-modal-close {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    background: var(--primary-100);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--duration-fast) var(--ease-out);
+    flex-shrink: 0;
+}
+
+.hire-me-modal-close:hover {
+    background: var(--primary);
+    color: #ffffff;
+    transform: rotate(90deg);
+}
+
+.hire-me-modal-body {
+    padding: var(--space-6);
+}
+
+.hire-form-group {
+    margin-bottom: var(--space-5);
+}
+
+.hire-form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-2);
+}
+
+.hire-form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.9375rem;
+    color: var(--text-primary);
+    font-family: inherit;
+    transition: all var(--duration-fast) var(--ease-out);
+}
+
+.hire-form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-100);
+}
+
+.hire-form-input::placeholder {
+    color: var(--text-muted);
+}
+
+textarea.hire-form-input {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.hire-services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
+}
+
+@media (max-width: 640px) {
+    .hire-services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.hire-service-item {
+    padding: var(--space-3);
+    background: var(--primary-50);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-out);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.hire-service-item:hover {
+    border-color: var(--primary);
+    background: var(--primary-100);
+}
+
+.hire-service-item.selected {
+    border-color: var(--primary);
+    background: var(--primary-100);
+}
+
+.hire-service-item i {
+    color: var(--primary);
+    font-size: 1.125rem;
+}
+
+.hire-service-item span {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* ============================================
+   UPWORK FLOATING WIDGET
+   ============================================ */
+
+.upwork-widget {
+    position: fixed;
+    bottom: var(--space-6);
+    left: var(--space-6);
+    z-index: 1500;
+}
+
+.upwork-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #14a800;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(20, 168, 0, 0.4);
+    cursor: pointer;
+    transition: all var(--duration-base) var(--ease-out);
+    border: none;
+    font-size: 1.5rem;
+}
+
+.upwork-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 28px rgba(20, 168, 0, 0.5);
+}
+
+.upwork-toggle.active {
+    transform: rotate(45deg);
+}
+
+.upwork-popup {
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    width: 300px;
+    box-shadow: var(--shadow-xl);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all var(--duration-base) var(--ease-out);
+}
+
+.upwork-popup.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.upwork-popup-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.upwork-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: #14a800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.upwork-popup-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.upwork-popup-description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-4);
+    line-height: 1.6;
+}
+
+.upwork-services-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+}
+
+.upwork-service-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: var(--primary-50);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all var(--duration-fast) var(--ease-out);
+}
+
+.upwork-service-link:hover {
+    background: var(--primary-100);
+    color: var(--primary);
+    transform: translateX(4px);
+}
+
+.upwork-service-link i {
+    color: #14a800;
+    font-size: 1rem;
+}
+
+.upwork-hire-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background: #14a800;
+    color: #ffffff;
+    border-radius: var(--radius-md);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    transition: all var(--duration-fast) var(--ease-out);
+    text-decoration: none;
+}
+
+.upwork-hire-btn:hover {
+    background: #108a00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(20, 168, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .upwork-widget {
+        bottom: var(--space-4);
+        left: var(--space-4);
+    }
+
+    .upwork-popup {
+        width: 280px;
+        left: 0;
+    }
+
+    .project-preview-container {
+        max-width: 95vw;
+    }
+
+    .project-preview-image {
+        max-height: 60vh;
+    }
+
+    .project-preview-title {
+        font-size: 1.25rem;
+    }
+
+    .project-preview-description {
+        font-size: 0.875rem;
+    }
+
+    .preview-zoom-controls {
+        bottom: var(--space-2);
+        right: var(--space-2);
+    }
+
+    .zoom-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.875rem;
+    }
+
+    .preview-close {
+        top: var(--space-2);
+        right: var(--space-2);
+        width: 40px;
+        height: 40px;
+    }
+
+    .hire-me-modal-content {
+        max-width: 95vw;
+    }
+}
+
+/* ============================================
+   CV DOWNLOAD BUTTON
+   ============================================ */
+
+.btn-cv {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: #ffffff;
+    box-shadow: 0 4px 14px rgba(4, 76, 95, 0.35);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-cv::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-cv:hover::before {
+    left: 100%;
+}
+
+.btn-cv:hover {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(4, 76, 95, 0.4);
+}
+
+/* Hire Me Button Animation */
+#hire-me-nav {
+    position: relative;
+    overflow: hidden;
+    animation: pulse-hire 2s ease-in-out infinite;
+}
+
+@keyframes pulse-hire {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(4, 76, 95, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(4, 76, 95, 0);
+    }
+}
+
+#hire-me-nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shine-hire 3s ease-in-out infinite;
+}
+
+@keyframes shine-hire {
+    0% {
+        left: -100%;
+    }
+    50%, 100% {
+        left: 100%;
+    }
+}
+
+/* ============================================
    ANIMATED BACKGROUND (Desktop Only >= 1024px)
    ============================================ */
 
@@ -1574,18 +2233,20 @@ body.modal-open {
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: -1;
         pointer-events: none;
         overflow: hidden;
+        background-color: var(--bg-primary);
     }
 
     .animated-bg-element {
         position: absolute;
+        bottom: -50px;
         font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
         font-size: 14px;
-        opacity: 0.04;
+        font-weight: 600;
         color: var(--primary);
-        will-change: transform;
+        text-shadow: 0 0 8px rgba(var(--primary-rgb), 0.3);
+        will-change: transform, opacity;
         animation: floatElement linear infinite;
         user-select: none;
         pointer-events: none;
@@ -1593,23 +2254,38 @@ body.modal-open {
 
     @keyframes floatElement {
         0% {
-            transform: translateY(100vh) rotate(0deg);
+            transform: translateY(0) rotate(0deg);
             opacity: 0;
         }
         10% {
-            opacity: 0.04;
+            opacity: 0.50;
+        }
+        50% {
+            opacity: 0.70;
         }
         90% {
-            opacity: 0.04;
+            opacity: 0.50;
         }
         100% {
-            transform: translateY(-100px) rotate(360deg);
+            transform: translateY(-110vh) rotate(360deg);
             opacity: 0;
         }
     }
 
-    .animated-bg-element:nth-child(odd) {
-        animation-direction: reverse;
+    /* Body transparent so animated-bg background shows */
+    body {
+        background-color: transparent !important;
+    }
+
+    /* Sections sit above animated-bg */
+    section {
+        position: relative;
+        z-index: 1;
+    }
+
+    footer {
+        position: relative;
+        z-index: 1;
     }
 }
 

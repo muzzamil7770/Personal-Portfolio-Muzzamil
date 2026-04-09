@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Portfolio Inquiry</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa;">
+    
+    <!-- Email Container -->
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f7fa; padding: 20px;">
+        <tr>
+            <td align="center">
+                
+                <!-- Main Email Card -->
+                <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); overflow: hidden; margin: 20px auto;">
+                    
+                    <!-- Header Banner -->
+                    <tr>
+                        <td style="background: linear-gradient(135deg, #00aedc 0%, #056479 100%); padding: 40px 30px; text-align: center;">
+                            <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 700; letter-spacing: -0.5px;">
+                                📩 New Portfolio Inquiry
+                            </h1>
+                            <p style="margin: 10px 0 0 0; color: rgba(255, 255, 255, 0.9); font-size: 14px;">
+                                Muhammad Muzzamil - Personal Portfolio
+                            </p>
+                        </td>
+                    </tr>
+                    
+                    <!-- Content Section -->
+                    <tr>
+                        <td style="padding: 40px 30px;">
+                            
+                            <!-- Greeting -->
+                            <p style="margin: 0 0 30px 0; font-size: 18px; color: #2d3748; font-weight: 600;">
+                                Hello Muhammad,
+                            </p>
+                            
+                            <p style="margin: 0 0 30px 0; font-size: 15px; color: #4a5568; line-height: 1.6;">
+                                You've received a new inquiry from your portfolio website. Here are the details:
+                            </p>
+                            
+                            <!-- Client Information Box -->
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8fafc; border-left: 4px solid #00aedc; border-radius: 8px; margin-bottom: 30px;">
+                                <tr>
+                                    <td style="padding: 25px;">
+                                        
+                                        <!-- Client Name -->
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
+                                            <tr>
+                                                <td style="padding-bottom: 8px;">
+                                                    <span style="font-size: 12px; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
+                                                        👤 Client Name
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p style="margin: 0; font-size: 18px; color: #2d3748; font-weight: 600;">
+                                                        {{name}}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <!-- Email -->
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
+                                            <tr>
+                                                <td style="padding-bottom: 8px;">
+                                                    <span style="font-size: 12px; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
+                                                        📧 Email Address
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="mailto:{{email}}" style="font-size: 16px; color: #00aedc; text-decoration: none; font-weight: 500;">
+                                                        {{email}}
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <!-- Subject -->
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
+                                            <tr>
+                                                <td style="padding-bottom: 8px;">
+                                                    <span style="font-size: 12px; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
+                                                        📋 Subject
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p style="margin: 0; font-size: 16px; color: #2d3748; font-weight: 500;">
+                                                        {{subject}}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <!-- Services (Hire Me Form Only) -->
+                                        {{#if services}}
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
+                                            <tr>
+                                                <td style="padding-bottom: 8px;">
+                                                    <span style="font-size: 12px; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
+                                                        💼 Services Requested
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p style="margin: 0; font-size: 16px; color: #2d3748; font-weight: 500;">
+                                                        {{services}}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        {{/if}}
+                                        
+                                        <!-- Budget (Hire Me Form Only) -->
+                                        {{#if budget}}
+                                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
+                                            <tr>
+                                                <td style="padding-bottom: 8px;">
+                                                    <span style="font-size: 12px; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
+                                                        💰 Budget Range
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <p style="margin: 0; font-size: 16px; color: #2d3748; font-weight: 500;">
+                                                        {{budget}}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        {{/if}}
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Message Section -->
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 30px;">
+                                <tr>
+                                    <td style="padding-bottom: 12px;">
+                                        <span style="font-size: 12px; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
+                                            💬 Client Message
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                                            <p style="margin: 0; font-size: 15px; color: #2d3748; line-height: 1.8; white-space: pre-wrap;">
+                                                {{message}}
+                                            </p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Action Buttons -->
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 30px;">
+                                <tr>
+                                    <td style="text-align: center;">
+                                        
+                                        <!-- Reply Button -->
+                                        <a href="mailto:{{email}}?subject=Re: {{subject}}" 
+                                           style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #00aedc 0%, #056479 100%); color: #ffffff; text-decoration: none; border-radius: 8px; font-size: 15px; font-weight: 600; margin: 5px;">
+                                            ✉️ Reply to Client
+                                        </a>
+                                        
+                                        <!-- WhatsApp Button -->
+                                        <a href="https://wa.me/?text=Hi {{name}}, I received your inquiry from my portfolio. Let's discuss your project!" 
+                                           style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #25d366 0%, #128c7e 100%); color: #ffffff; text-decoration: none; border-radius: 8px; font-size: 15px; font-weight: 600; margin: 5px;">
+                                            💬 WhatsApp
+                                        </a>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Divider -->
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin: 30px 0;">
+                                <tr>
+                                    <td style="border-top: 2px solid #e2e8f0;"></td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Quick Stats -->
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
+                                <tr>
+                                    <td style="padding: 15px; background-color: #f0f9ff; border-radius: 8px; text-align: center;">
+                                        <p style="margin: 0 0 8px 0; font-size: 12px; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">
+                                            📅 Submission Time
+                                        </p>
+                                        <p style="margin: 0; font-size: 16px; color: #2d3748; font-weight: 600;">
+                                            {{submission_time}}
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td style="background-color: #f8fafc; padding: 30px; text-align: center; border-top: 1px solid #e2e8f0;">
+                            
+                            <!-- Brand Info -->
+                            <p style="margin: 0 0 15px 0; font-size: 18px; color: #2d3748; font-weight: 700;">
+                                Muhammad Muzzamil
+                            </p>
+                            
+                            <p style="margin: 0 0 15px 0; font-size: 14px; color: #00aedc; font-weight: 600;">
+                                Software Engineer & Angular Developer
+                            </p>
+                            
+                            <!-- Contact Info -->
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 20px;">
+                                <tr>
+                                    <td style="padding: 5px;">
+                                        <a href="mailto:mohammadmuzzamil7770@gmail.com" style="font-size: 13px; color: #4a5568; text-decoration: none;">
+                                            📧 Email
+                                        </a>
+                                    </td>
+                                    <td style="padding: 5px;">
+                                        <a href="https://wa.me/+923068667770" style="font-size: 13px; color: #4a5568; text-decoration: none;">
+                                            📱 WhatsApp
+                                        </a>
+                                    </td>
+                                    <td style="padding: 5px;">
+                                        <a href="https://www.linkedin.com/in/muzzamil-dev" style="font-size: 13px; color: #4a5568; text-decoration: none;">
+                                            💼 LinkedIn
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Website Link -->
+                            <a href="https://muzzamilportfolio-v2.netlify.app" style="display: inline-block; padding: 10px 24px; background-color: #ffffff; color: #00aedc; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 600; border: 2px solid #00aedc;">
+                                🌐 View Portfolio
+                            </a>
+                            
+                            <!-- Copyright -->
+                            <p style="margin: 20px 0 0 0; font-size: 12px; color: #a0aec0;">
+                                © 2026 Muhammad Muzzamil. All rights reserved.
+                            </p>
+                            
+                        </td>
+                    </tr>
+                    
+                </table>
+                
+                <!-- View in Browser Link -->
+                <p style="margin: 20px 0; font-size: 12px; color: #a0aec0; text-align: center;">
+                    This email was sent from your Personal Portfolio website<br>
+                    <a href="https://muzzamilportfolio-v2.netlify.app" style="color: #00aedc; text-decoration: none;">
+                        muzzamilportfolio-v2.netlify.app
+                    </a>
+                </p>
+                
+            </td>
+        </tr>
+    </table>
+    
+</body>
+</html>

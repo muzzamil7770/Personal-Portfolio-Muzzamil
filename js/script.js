@@ -1,4 +1,77 @@
 // ============================================
+// ANIMATED BACKGROUND (Desktop Only)
+// ============================================
+
+function initAnimatedBackground() {
+    // Only enable on desktop (>= 1024px)
+    if (window.innerWidth < 1024) return;
+
+    const container = document.getElementById('animated-bg');
+    if (!container) return;
+
+    // Developer-themed symbols and code snippets
+    const symbols = [
+        '</>', '{ }', '( )', '=>', 'const', 'function',
+        'return', 'import', 'export', 'async', 'await',
+        'class', 'extends', 'interface', 'type', 'enum',
+        '<div>', '</div>', '<Component />', 'useState',
+        'useEffect', 'ngOnInit', '@Component', '[ngFor]',
+        '*ngIf', '[(ngModel)]', 'RxJS', 'Observable',
+        'subscribe', 'pipe', 'map', 'filter', 'switchMap',
+        'Promise', '.then()', 'try {}', 'catch (e)',
+        'console.log()', 'debugger', 'npm install',
+        'git commit', 'git push', 'docker run',
+        'SELECT *', 'WHERE', 'JOIN', 'INSERT INTO',
+        'HTTP', 'REST', 'API', 'JSON', 'GraphQL',
+        'CSS', 'HTML', 'JS', 'TS', 'SCSS',
+        '0', '1', 'true', 'false', 'null', 'undefined',
+        '===', '!==', '&&', '||', '?.', '??',
+        '...', '=>', '()', '{}', '[]', '<>'
+    ];
+
+    const elementCount = 25; // Number of floating elements
+
+    for (let i = 0; i < elementCount; i++) {
+        const element = document.createElement('div');
+        element.className = 'animated-bg-element';
+        element.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        
+        // Random positioning
+        element.style.left = Math.random() * 100 + '%';
+        element.style.fontSize = (Math.random() * 10 + 12) + 'px'; // 12-22px
+        
+        // Random animation duration (15-40 seconds for slow, smooth movement)
+        const duration = Math.random() * 25 + 15;
+        element.style.animationDuration = duration + 's';
+        
+        // Random delay so they don't all start at once
+        element.style.animationDelay = (Math.random() * duration) + 's';
+        
+        // Slight opacity variation
+        element.style.opacity = (Math.random() * 0.03 + 0.02).toString();
+        
+        container.appendChild(element);
+    }
+
+    // Re-initialize on resize if crossing breakpoint
+    let isDesktop = window.innerWidth >= 1024;
+    
+    window.addEventListener('resize', () => {
+        const nowDesktop = window.innerWidth >= 1024;
+        
+        if (nowDesktop && !isDesktop) {
+            // Switched to desktop - initialize
+            isDesktop = true;
+            initAnimatedBackground();
+        } else if (!nowDesktop && isDesktop) {
+            // Switched to mobile/tablet - clear
+            isDesktop = false;
+            container.innerHTML = '';
+        }
+    }, { passive: true });
+}
+
+// ============================================
 // INITIALIZATION
 // ============================================
 
@@ -13,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Render all content
     renderAll();
+
+    // Initialize Animated Background (Desktop only)
+    initAnimatedBackground();
 
     // Initialize Typed.js
     const typedElement = document.getElementById('typed');

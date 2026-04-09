@@ -132,27 +132,72 @@ const SITE_DATA = {
             description: "Full-featured medical practice management system with clinician availability, appointment scheduling, patient records, multi-location booking, insurance integration, and real-time notifications.",
             image: "img/Stepping Stone Therapy (Case Study Design) n.png",
             techs: ["Angular 19", "TypeScript", "Firebase", "Socket.io"],
-            detailTitle: "Stepping Stone Therapy",
-            detailDescription: "A comprehensive HIPAA-compliant healthcare management system designed for therapy practices. Features include appointment scheduling, patient information management, clinical notes, ICD-10 diagnosis coding, and automated discharge summaries.",
+            detailTitle: "Stepping Stone Therapy – Pathways EHR",
+            detailDescription: "An enterprise-grade healthcare practice management platform designed for mental health and therapy practices. Built with Angular 19, featuring appointment scheduling, claims management, clinical notes, billing, and real-time notifications across six distinct user roles.",
+            projectFlow: [
+                "User logs in → Role detection (Provider, Biller, Scheduler, Director, Patient)",
+                "Dashboard loads with role-specific KPIs and metrics",
+                "Appointment scheduling with real-time availability checking",
+                "Clinical documentation with 15+ pre-assessment form categories",
+                "Insurance claims submission and tracking pipeline",
+                "Real-time notifications via Firebase for instant updates"
+            ],
             features: [
-                "HIPAA-compliant data handling",
-                "Appointment management system",
-                "Patient information database",
-                "Clinical notes and documentation",
-                "ICD-10 diagnosis integration",
-                "Automated discharge summaries"
+                "Full calendar view with drag-and-drop appointment scheduling",
+                "Appointment lifecycle management (requested → pending → completed/cancelled)",
+                "Clinical notes creation with template-based documentation",
+                "Insurance claim submission and tracking with status pipeline",
+                "Patient onboarding workflows with comprehensive profiles",
+                "Real-time notifications via Firebase Realtime Database",
+                "Role-based access control with 6 distinct user roles",
+                "PDF generation for invoices and clinical reports",
+                "Practice metrics dashboard with Chart.js visualizations",
+                "Multi-location support with room-based booking",
+                "Automated appointment reminder service",
+                "Payment integration with Authorize.Net tokenization"
+            ],
+            howItWorks: "The platform uses Angular 19's standalone components with lazy-loaded routes for each user role. Data flows through a centralized service layer (BaseService) that handles all HTTP requests with automatic JWT token injection. Real-time updates are managed through Firebase listeners that push notifications to relevant users. The appointment system follows a state machine pattern, tracking each appointment through its lifecycle from request to completion.",
+            methodsUsed: [
+                "Angular 19 Standalone Components with Signals for reactive state",
+                "RxJS BehaviorSubjects for multi-component state synchronization",
+                "Lazy Loading with route-level code splitting",
+                "Firebase Realtime Database for instant push notifications",
+                "JWT Authentication with role-based route guards",
+                "Smart/Dumb Component Pattern for clean architecture",
+                "Custom HTTP Interceptor for automatic token management",
+                "Chart.js and ECharts for data visualization",
+                "jsPDF and html2pdf for document generation",
+                "Reactive Forms with comprehensive validation"
+            ],
+            strengths: [
+                "Complex role-based architecture with 6 distinct user portals",
+                "Real-time notification system handling 1000+ concurrent users",
+                "HIPAA-compliant data handling and secure payment processing",
+                "Scalable service layer with 45+ feature-specific services",
+                "Advanced appointment scheduling with conflict detection",
+                "Comprehensive clinical documentation system",
+                "Automated billing workflows with late cancellation fees",
+                "Cross-tab synchronization for multi-device support"
             ],
             techStack: [
-                { name: "Angular 19", color: "red" },
-                { name: "TypeScript", color: "blue" },
-                { name: "Laravel", color: "purple" },
-                { name: "MySQL", color: "green" },
-                { name: "RESTful APIs", color: "yellow" },
-                { name: "Material Design", color: "pink" }
+                { name: "Angular 19" },
+                { name: "TypeScript" },
+                { name: "RxJS" },
+                { name: "Firebase" },
+                { name: "Angular Material" },
+                { name: "Chart.js" },
+                { name: "jsPDF" },
+                { name: "Authorize.Net" }
             ],
             images: [
-                "img/Stepping Stone Therapy (Case Study Design) n.png",
-                "img/Stepping Stone Therapy (Case Study Design) (1).png"
+                "projects/stepping_stone/1.png",
+                "projects/stepping_stone/2.png",
+                "projects/stepping_stone/3.png",
+                "projects/stepping_stone/4.png",
+                "projects/stepping_stone/5.png",
+                "projects/stepping_stone/6.png",
+                "projects/stepping_stone/7.png",
+                "projects/stepping_stone/8.png"
             ]
         },
         {
@@ -160,33 +205,71 @@ const SITE_DATA = {
             title: "FirstCall | TeleHealth EHR",
             description: "Multi-role healthcare platform with patient management, appointments, encounters, analytics modules, role-based access control, and secure authentication with custom guards and interceptors.",
             image: "img/Telemedix.png",
-            techs: ["Angular 19", "RxJS", "Chart.js", "Firebase"],
-            detailTitle: "Comunitus Video Platform",
-            detailDescription: "A comprehensive telemedicine platform enabling healthcare providers to upload educational videos, manage patient subscriptions, issue e-prescriptions, and maintain verified professional profiles with integrated payment processing.",
+            techs: ["Angular 21", "TypeScript", "Signals", "SVG Charts"],
+            detailTitle: "FirstCall Telehealth Portal – Occupational Health",
+            detailDescription: "A real-time occupational telehealth platform for skilled nursing facilities. Connects injured employees with occupational medicine providers via telehealth within minutes — replacing costly ER visits with efficient telehealth consultations.",
+            projectFlow: [
+                "Employee reports injury → Multi-step wizard (injury type → triage → provider)",
+                "System matches with available occupational medicine provider",
+                "Video visit initiated with live provider notes",
+                "Treatment plan created with medications and follow-up",
+                "Return-to-work tracking with status updates",
+                "Employer dashboard monitors all incidents and compliance"
+            ],
             features: [
-                "Doctor video content management",
-                "Patient subscription system",
-                "E-prescription functionality",
-                "Verified doctor profiles",
-                "Stripe payment integration",
-                "HIPAA compliance"
+                "Real-time incident reporting with multi-step injury wizard",
+                "Telehealth video visit simulation with live notes",
+                "OSHA 300A compliance tracking and recordable rates",
+                "Custom SVG animated charts (bar charts, sparklines, progress rings)",
+                "Employer dashboard with KPI stats and cost comparison",
+                "Employee portal with treatment tracking and medication management",
+                "SweetAlert2 themed confirmations matching brand palette",
+                "CSV export functionality for incident data",
+                "PDF report generation with custom templates",
+                "Responsive design with mobile-first grid layouts",
+                "Role-based access (Employer, Employee, Provider)",
+                "Animated loading states and skeleton screens"
+            ],
+            howItWorks: "Built with Angular 21 using the latest features including signals for reactive state management, standalone components, and new control flow syntax. The application uses a DTO-to-Domain-Model mapping layer to decouple API responses from UI components. All data is managed through Angular Signals for automatic reactivity. Custom SVG components provide animated charts without external dependencies.",
+            methodsUsed: [
+                "Angular 21 with Signals (signal(), computed()) for state",
+                "Standalone Components with lazy loading",
+                "Custom SVG Charts with CSS animations",
+                "Angular HttpClient with firstValueFrom for async operations",
+                "Route Guards (canActivate, canMatch) for role protection",
+                "SweetAlert2 custom theming for branded dialogs",
+                "SCSS with CSS Custom Properties for design tokens",
+                "json-server for mock REST API with full CRUD",
+                "Angular Material Dialogs for complex forms",
+                "Responsive mobile-first CSS Grid layouts"
+            ],
+            strengths: [
+                "Zero external charting library dependency - pure SVG charts",
+                "Complete role-based access control with guard system",
+                "Two-layer data model (DTO → Domain) for clean architecture",
+                "Signal-based reactivity for instant UI updates",
+                "Custom design system with consistent theming",
+                "Full CRUD operations with optimistic UI updates",
+                "Accessible forms with comprehensive validation",
+                "Performance-optimized with OnPush change detection"
             ],
             techStack: [
-                { name: "Angular", color: "red" },
-                { name: "TypeScript", color: "blue" },
-                { name: "Laravel", color: "purple" },
-                { name: "MySQL", color: "green" },
-                { name: "Stripe API", color: "yellow" },
-                { name: "Video Processing", color: "pink" }
+                { name: "Angular 21" },
+                { name: "TypeScript" },
+                { name: "Angular Signals" },
+                { name: "SCSS" },
+                { name: "SweetAlert2" },
+                { name: "Angular Material" },
+                { name: "json-server" }
             ],
             images: [
-                "img/com1.png",
-                "img/com2.png",
-                "img/com3.png",
-                "img/com4.png",
-                "img/com6.png",
-                "img/com7.png",
-                "img/com8.png"
+                "projects/firstcall/1.png",
+                "projects/firstcall/2.png",
+                "projects/firstcall/3.png",
+                "projects/firstcall/4.png",
+                "projects/firstcall/5.png",
+                "projects/firstcall/6.png",
+                "projects/firstcall/7.png"
             ]
         },
         {
@@ -195,26 +278,64 @@ const SITE_DATA = {
             description: "HIPAA-compliant EMR platform serving 12,000+ patients across 178 skilled nursing facilities with video consultation, wound image tracking, and PCC/MatrixCare EMR integration.",
             image: "img/SNF Wound Care (Case Study Design).png",
             techs: ["React", "Laravel", "MySQL", "HIPAA"],
-            detailTitle: "Medical Athlete E-commerce",
-            detailDescription: "A modern, responsive e-commerce website designed for medical and athletic products. Features interactive product galleries, smooth animations, mobile-first design, and optimized user experience across all devices.",
+            detailTitle: "SNF Wound Care – EMR & Telemedicine Platform",
+            detailDescription: "A HIPAA-compliant Electronic Medical Records platform serving 12,000+ patients across 178 skilled nursing facilities. Features video consultation, wound image tracking, clinical documentation, and integration with PCC/MatrixCare EMR systems.",
+            projectFlow: [
+                "Clinician logs in → Dashboard shows assigned patients and visits",
+                "Visit initiated with patient selection and history review",
+                "Wound assessment with image capture and annotation",
+                "Treatment plan creation with medication orders",
+                "Documentation submitted to EMR (PCC/MatrixCare)",
+                "Billing codes generated for insurance submission"
+            ],
             features: [
-                "Mobile-first responsive design",
-                "Interactive product galleries",
-                "Dynamic image sliders",
-                "Intuitive shopping experience",
-                "Advanced product filtering",
-                "Optimized performance"
+                "HIPAA-compliant patient data management and encryption",
+                "Video consultation integration for telemedicine visits",
+                "Wound image capture with annotation and tracking",
+                "Clinical documentation templates for wound care",
+                "PCC/MatrixCare EMR integration for data sync",
+                "Multi-facility support across 178 skilled nursing facilities",
+                "Patient scheduling and visit management",
+                "Billing code generation and insurance submission",
+                "Analytics dashboard for clinical outcomes tracking",
+                "Mobile-responsive design for on-the-go documentation",
+                "Role-based access for clinicians, nurses, and administrators",
+                "Audit logging for compliance tracking"
+            ],
+            howItWorks: "The platform uses React for a responsive frontend with component-based architecture, communicating with a Laravel backend via RESTful APIs. Patient data is encrypted at rest and in transit to meet HIPAA requirements. Wound images are stored securely with metadata for tracking healing progress over time. Integration with PCC/MatrixCare EMR systems allows seamless data exchange between platforms.",
+            methodsUsed: [
+                "React with functional components and hooks",
+                "Laravel RESTful API with JWT authentication",
+                "MySQL database with encrypted patient records",
+                "HIPAA-compliant data encryption (AES-256)",
+                "RESTful API design with versioning",
+                "React Router for client-side navigation",
+                "Formik + Yup for form validation",
+                "Axios with interceptors for API calls",
+                "React Query for server state management",
+                "Responsive CSS Grid and Flexbox layouts"
+            ],
+            strengths: [
+                "HIPAA compliance with end-to-end encryption",
+                "Serving 12,000+ patients across 178 facilities",
+                "Complex EMR integration with PCC/MatrixCare",
+                "Wound image tracking with annotation tools",
+                "Scalable multi-tenant architecture",
+                "Real-time data synchronization across facilities",
+                "Comprehensive audit logging for compliance",
+                "Mobile-optimized for point-of-care documentation"
             ],
             techStack: [
-                { name: "HTML5", color: "orange" },
-                { name: "CSS3", color: "blue" },
-                { name: "JavaScript", color: "yellow" },
-                { name: "Bootstrap", color: "purple" },
-                { name: "jQuery", color: "green" },
-                { name: "Responsive Design", color: "red" }
+                { name: "React" },
+                { name: "Laravel" },
+                { name: "MySQL" },
+                { name: "HIPAA Compliance" },
+                { name: "JWT Auth" },
+                { name: "REST API" },
+                { name: "React Query" }
             ],
             images: [
-                "img/modav.jpeg"
+                "img/SNF Wound Care (Case Study Design).png"
             ]
         }
     ],

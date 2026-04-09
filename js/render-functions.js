@@ -326,7 +326,7 @@ function openProjectModal(projectId) {
 
     const screenshotsHTML = project.images.length > 0 ? `
         <div class="modal-section">
-            <h3 class="modal-section-title">Project Screenshots</h3>
+            <h3 class="modal-section-title"><i class="fas fa-images" style="margin-right: 8px; color: var(--primary);"></i>Project Screenshots</h3>
             <div class="modal-screenshots">
                 ${project.images.map(img => `
                     <div class="modal-screenshot">
@@ -343,7 +343,19 @@ function openProjectModal(projectId) {
         <p class="modal-description">${project.detailDescription}</p>
 
         <div class="modal-section">
-            <h3 class="modal-section-title">Key Features</h3>
+            <h3 class="modal-section-title"><i class="fas fa-project-diagram" style="margin-right: 8px; color: var(--primary);"></i>Project Flow</h3>
+            <ol class="modal-features" style="list-style: none; counter-reset: item;">
+                ${project.projectFlow.map((step, i) => `
+                    <li style="counter-increment: item; position: relative; padding-left: 32px;">
+                        <span style="position: absolute; left: 0; top: 2px; width: 24px; height: 24px; background: var(--primary-100); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700;">${i + 1}</span>
+                        <span>${step}</span>
+                    </li>
+                `).join('')}
+            </ol>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title"><i class="fas fa-star" style="margin-right: 8px; color: var(--primary);"></i>Key Features</h3>
             <ul class="modal-features">
                 ${project.features.map(feature => `
                     <li>
@@ -355,7 +367,36 @@ function openProjectModal(projectId) {
         </div>
 
         <div class="modal-section">
-            <h3 class="modal-section-title">Technologies Used</h3>
+            <h3 class="modal-section-title"><i class="fas fa-cogs" style="margin-right: 8px; color: var(--primary);"></i>How It Works</h3>
+            <p style="color: var(--text-secondary); line-height: 1.75; font-size: 0.9375rem;">${project.howItWorks}</p>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title"><i class="fas fa-code" style="margin-right: 8px; color: var(--primary);"></i>Methods & Technologies Used</h3>
+            <ul class="modal-features">
+                ${project.methodsUsed.map(method => `
+                    <li>
+                        <i class="fas fa-angle-right"></i>
+                        <span>${method}</span>
+                    </li>
+                `).join('')}
+            </ul>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title"><i class="fas fa-trophy" style="margin-right: 8px; color: var(--primary);"></i>Developer Strengths Demonstrated</h3>
+            <ul class="modal-features">
+                ${project.strengths.map(strength => `
+                    <li>
+                        <i class="fas fa-bolt"></i>
+                        <span>${strength}</span>
+                    </li>
+                `).join('')}
+            </ul>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title"><i class="fas fa-layer-group" style="margin-right: 8px; color: var(--primary);"></i>Technologies Used</h3>
             <div class="modal-tech-stack">
                 ${project.techStack.map(tech => `<span>${tech.name}</span>`).join('')}
             </div>

@@ -269,10 +269,10 @@ function renderContact() {
             </div>
         </div>
 
-        <form class="contact-form" id="contact-form" action="https://formspree.io/f/mdapvwkl" method="POST" data-aos="fade-left">
-            <input type="hidden" name="_next" value="thanks.html" />
-            <input type="hidden" name="_subject" value="New Contact Form Submission - Portfolio" />
-            <input type="hidden" name="_captcha" value="false" />
+        <form class="contact-form" id="contact-form" data-aos="fade-left">
+            <input type="hidden" name="access_key" value="e9545f8c-ee5c-47ff-bc2f-47a2eeec15ff" />
+            <input type="hidden" name="subject" value="New Contact Form Submission - Portfolio" />
+            <input type="checkbox" name="botcheck" style="display: none;" />
             
             <div class="form-group">
                 <label for="name" class="form-label">Your Name</label>

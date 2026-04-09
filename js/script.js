@@ -240,10 +240,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     
     function setupFormHandlers() {
-        console.log('🔧 Setting up form handlers...');
+        console.log('🔧 Setting up form handlers with Web3Forms...');
         
         // ============================================
-        // CONTACT FORM - FORMSPREE INTEGRATION
+        // CONTACT FORM - WEB3FORMS INTEGRATION
         // ============================================
         
         const contactForm = document.getElementById('contact-form');
@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const contactSuccess = document.getElementById('contact-form-success');
         const contactError = document.getElementById('contact-form-error');
 
-        console.log('📋 Contact form found:', contactForm ? 'YES' : 'NO');
+        console.log('📋 Contact form found:', contactForm ? 'YES ✓' : 'NO ✗');
 
         if (!contactForm) {
             console.error('❌ Contact form not found in DOM!');
@@ -273,20 +273,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 const formData = new FormData(contactForm);
+                const object = Object.fromEntries(formData);
+                const json = JSON.stringify(object);
                 
-                console.log('📤 Sending to:', contactForm.action);
+                console.log('📤 Sending to Web3Forms API...');
                 
-                const response = await fetch(contactForm.action, {
+                const response = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
-                    body: formData,
                     headers: {
+                        'Content-Type': 'application/json',
                         'Accept': 'application/json'
-                    }
+                    },
+                    body: json
                 });
 
-                console.log('✅ Response status:', response.status);
+                const data = await response.json();
+                console.log('✅ Web3Forms response:', data);
                 
-                if (response.ok) {
+                if (response.ok && data.success) {
                     // Show success message
                     console.log('✅ Form submitted successfully!');
                     contactSuccess.style.display = 'block';
@@ -301,16 +305,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         window.location.href = 'thanks.html';
                     }, 2000);
                 } else {
-                    // Error - get details
-                    let errorMessage = 'Unknown error occurred';
-                    try {
-                        const errorData = await response.json();
-                        errorMessage = errorData.error || errorData.message || JSON.stringify(errorData);
-                        console.error('❌ Form error:', errorData);
-                    } catch (e) {
-                        errorMessage = `HTTP ${response.status}: ${response.statusText}`;
-                    }
-                    console.error('❌ Error:', errorMessage);
+                    // Error from Web3Forms
+                    const errorMessage = data.message || 'Unknown error occurred';
+                    console.error('❌ Web3Forms error:', data);
                     contactError.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${errorMessage}`;
                     contactError.style.display = 'block';
                 }
@@ -335,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const hireError = document.getElementById('hire-form-error');
         const hireServicesInput = document.getElementById('hire-services');
 
-        console.log('💼 Hire form found:', hireForm ? 'YES' : 'NO');
+        console.log('💼 Hire form found:', hireForm ? 'YES ✓' : 'NO ✗');
 
         if (hireForm) {
             hireForm.addEventListener('submit', async function(e) {
@@ -356,20 +353,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 try {
                     const formData = new FormData(hireForm);
+                    const object = Object.fromEntries(formData);
+                    const json = JSON.stringify(object);
                     
-                    console.log('📤 Sending to:', hireForm.action);
+                    console.log('📤 Sending to Web3Forms API...');
                     
-                    const response = await fetch(hireForm.action, {
+                    const response = await fetch('https://api.web3forms.com/submit', {
                         method: 'POST',
-                        body: formData,
                         headers: {
+                            'Content-Type': 'application/json',
                             'Accept': 'application/json'
-                        }
+                        },
+                        body: json
                     });
 
-                    console.log('✅ Response status:', response.status);
+                    const data = await response.json();
+                    console.log('✅ Web3Forms response:', data);
                     
-                    if (response.ok) {
+                    if (response.ok && data.success) {
                         console.log('✅ Hire form submitted successfully!');
                         hireSuccess.style.display = 'block';
                         hireForm.reset();
@@ -384,15 +385,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             window.location.href = 'thanks.html';
                         }, 2000);
                     } else {
-                        let errorMessage = 'Unknown error occurred';
-                        try {
-                            const errorData = await response.json();
-                            errorMessage = errorData.error || errorData.message || JSON.stringify(errorData);
-                            console.error('❌ Hire form error:', errorData);
-                        } catch (e) {
-                            errorMessage = `HTTP ${response.status}: ${response.statusText}`;
-                        }
-                        console.error('❌ Error:', errorMessage);
+                        const errorMessage = data.message || 'Unknown error occurred';
+                        console.error('❌ Web3Forms error:', data);
                         hireError.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${errorMessage}`;
                         hireError.style.display = 'block';
                     }
